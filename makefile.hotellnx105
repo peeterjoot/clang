@@ -1,18 +1,15 @@
 #-------------------------------------------------
 # local clang build related stuff:
 
-#-------------------------------------------------
-# Built two versions of clang, one for debugging
-# into rewritersample.cpp:
-#-------------------------------------------------
-GCCPATH=$(HOME)/toolchain480
-#GCCPATH=$(HOME)/toolchain480.opt
+GCCPATH=$(HOME)/toolchain492
 
 CLANGPATH=$(GCCPATH)
 
-LDFLAGS += -L$(CLANGPATH)/lib64
-LDFLAGS += -Wl,-rpath,$(CLANGPATH)/lib64
-LDFLAGS += -Wl,-rpath-link,$(CLANGPATH)/lib64
+LDFLAGS += -L$(CLANGPATH)/lib64 -L$(CLANGPATH)/lib
+LDFLAGS += -Wl,-rpath,$(CLANGPATH)/lib64:$(CLANGPATH)/lib
+LDFLAGS += -Wl,-rpath-link,$(CLANGPATH)/lib64:$(CLANGPATH)/lib
+
+export LD_LIBRARY_PATH := $(CLANGPATH)/lib64:$(CLANGPATH)/lib
 
 #CXX := $(GCCPATH)/bin/g++
 CXX := $(CLANGPATH)/bin/clang++
