@@ -372,12 +372,12 @@ int main( int argc, char * argv[] )
    SourceManager sourceManager( *pDiagnosticsEngine,
                                 fileManager ) ;
 
-   TargetOptions targetOptions ;
+   std::shared_ptr<TargetOptions> pTargetOptions = make_shared<TargetOptions>() ;
 
-   targetOptions.Triple = llvm::sys::getDefaultTargetTriple() ;
+   pTargetOptions->Triple = llvm::sys::getDefaultTargetTriple() ;
 
    TargetInfo * pTargetInfo = TargetInfo::CreateTargetInfo( *pDiagnosticsEngine,
-                                                            &targetOptions ) ;
+                                                            pTargetOptions ) ;
 
    HeaderSearch headerSearch( headerSearchOptions,
                               sourceManager,
@@ -390,7 +390,6 @@ int main( int argc, char * argv[] )
    Preprocessor preprocessor( pOpts,
                               *pDiagnosticsEngine,
                               languageOptions,
-                              pTargetInfo,
                               sourceManager,
                               headerSearch,
                               compInst ) ;
@@ -400,14 +399,14 @@ int main( int argc, char * argv[] )
 
    InitializePreprocessor( preprocessor,
                            *pOpts,
-                           *headerSearchOptions,
                            frontendOptions ) ;
 
    const FileEntry * pFile = fileManager.getFile( argv[optind] ) ;
    
    if ( pFile )
    {
-      sourceManager.createMainFileID( pFile ) ;
+      sourceManager.setMainFileID(
+            sourceManager.createFileID(pFile, SourceLocation(), SrcMgr::C_User));
 
       Rewriter TheRewriter ;
 
@@ -427,11 +426,10 @@ int main( int argc, char * argv[] )
 
       ASTContext * pASTcontext = new ASTContext( languageOptions,
                                                  sourceManager,
-                                                 pTargetInfo,
+//                                                 pTargetInfo,
                                                  identifierTable,
                                                  selectorTable,
-                                                 builtinContext,
-                                                 0 /* size_reserve*/ ) ;
+                                                 builtinContext ) ;
 
       compInst.setASTContext( pASTcontext ) ;
 
