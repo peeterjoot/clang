@@ -197,7 +197,7 @@ bool VisitBinaryOperator( BinaryOperator * v )
    return true ;
 }
 
-#if 0
+
 bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )
 {
    cout << endl << "bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )" << endl ;
@@ -206,7 +206,7 @@ bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )
 
    return true ;
 }
-#endif
+
 
 bool VisitBinAssign( BinaryOperator * v )
 {
@@ -2727,7 +2727,7 @@ bool VisitUnaryTransformType( UnaryTransformType * v )
    return true ;
 }
 
-#if 0
+
 bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )
 {
    cout << endl << "bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )" << endl ;
@@ -2736,7 +2736,7 @@ bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )
 
    return true ;
 }
-#endif
+
 
 bool VisitUnresolvedLookupExpr( UnresolvedLookupExpr * v )
 {

@@ -8,7 +8,7 @@ include makefile.$(HOSTNAME)
 
 CFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --cxxflags)
 #CFLAGS := $(filter-out -fno-exceptions,$(CFLAGS))
-CLANG_LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
+LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
 
 LLVMSRC := $(shell $(LLVM_BIN_PATH)/llvm-config --src-root)
 LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
@@ -28,22 +28,17 @@ LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
 CFLAGS := $(subst -O3,,$(CFLAGS))
 #-------------------------------------------------
 
-LDFLAGS += $(CLANG_LDFLAGS)
 LDFLAGS += -lclangFrontendTool -lclangFrontend -lclangDriver 
 LDFLAGS += -lclangSerialization -lclangCodeGen -lclangParse 
 LDFLAGS += -lclangSema -lclangStaticAnalyzerFrontend 
 LDFLAGS += -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore 
 LDFLAGS += -lclangAnalysis -lclangARCMigrate 
+LDFLAGS += -lclangRewriteCore 
 LDFLAGS += -lclangEdit -lclangAST -lclangLex -lclangBasic
 LDFLAGS += -lLLVMMCParser
 LDFLAGS += -lLLVMBitReader
 LDFLAGS += -lLLVMOption
 LDFLAGS += -lLLVMTransformUtils
-LDFLAGS += -ldl
-LDFLAGS += -lpthread
-LDFLAGS += -lncurses
-LDFLAGS += -lz
-LDFLAGS += -lclangRewrite
 
 LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
@@ -85,13 +80,13 @@ dumper: dumper.o
 #	cp $< $@
 
 #ClangCheck: ClangCheck.o
-#	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport
+#	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport
 
 $(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
-	$(CXX) -Wl,-Map,$@.map $< -o $@ $(LDFLAGS) -lclangASTMatchers -lclangTooling -lclangRewrite
+	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
 
 $(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
-	$(CXX) -Wl,-Map,$@.map $< -o $@ $(LDFLAGS) -lclangASTMatchers -lclangTooling -lclangRewrite
+	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
 
 classvisitor: classvisitor.o
 	$(CXX) $< -o $@ $(LDFLAGS)

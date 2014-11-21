@@ -197,20 +197,8 @@ int main( int argc, char * argv[] )
    int c = 0 ;
    int optindex = 0 ;
 
-   std::unique_ptr<CompilerInvocation> CInvok;
-   //CInvok.reset(new CompilerInvocation(CI.getInvocation()));
-   CInvok.reset(new CompilerInvocation());
-   CompilerInvocation & CI = *CInvok ;
-
-   CInvok->getPreprocessorOpts().ChainedIncludes.clear();
-   CInvok->getPreprocessorOpts().ImplicitPCHInclude.clear();
-   CInvok->getPreprocessorOpts().ImplicitPTHInclude.clear();
-   CInvok->getPreprocessorOpts().DisablePCHValidation = true;
-   CInvok->getPreprocessorOpts().Includes.clear();
-   CInvok->getPreprocessorOpts().MacroIncludes.clear();
-   CInvok->getPreprocessorOpts().Macros.clear();
-
-   CInvok->HeaderSearchOpts = new HeaderSearchOptions() ;
+   llvm::IntrusiveRefCntPtr<PreprocessorOptions> pOpts( new PreprocessorOptions() ) ;
+   llvm::IntrusiveRefCntPtr<HeaderSearchOptions> headerSearchOptions( new HeaderSearchOptions() ) ;
 
 // 
 // This handles the issues with <stdlib.h> not found ... and so forth.  However, it introduces problems with various __builtin... not found.
@@ -315,23 +303,23 @@ int main( int argc, char * argv[] )
          case 'I':
          {
             //printf( "-I : %s\n", optarg ) ;
-            CInvok->getHeaderSearchOpts().AddPath( optarg,
-                                                   frontend::Quoted,
-                                                   false, // IsFramework
-                                                   false ) ; // IgnoreSysRoot
+            headerSearchOptions->AddPath( optarg,
+                                          frontend::Quoted,
+                                          false, // IsFramework
+                                          false ) ; // IgnoreSysRoot
             break ;
          }
          case 'D':
          {
             //printf( "-D : %s\n", optarg ) ;
-            CInvok->getPreprocessorOpts().addMacroDef( optarg ) ;
+            pOpts->addMacroDef( optarg ) ;
 
             break ;
          }
          case 'U':
          {
             //printf( "-U : %s\n", optarg ) ;
-            CInvok->getPreprocessorOpts().addMacroUndef( optarg ) ;
+            pOpts->addMacroUndef( optarg ) ;
 
             break ;
          }
@@ -348,87 +336,136 @@ int main( int argc, char * argv[] )
       }
    }
 
-   if ( optind != (argc - 1) ) 
+   if ( optind != (argc - 1) )
    {
       printUsageAndExit( argv[0] ) ;
    }
+ 
+   DiagnosticOptions diagnosticOptions ;
 
-   InputKind IK = clang::IK_CXX ;
-   CInvok->getFrontendOpts().Inputs.clear();
-   string filename(argv[optind]) ;
-   FrontendInputFile InputFile(filename, IK);
-   CInvok->getFrontendOpts().Inputs.push_back(InputFile);
+   TextDiagnosticPrinter * pTextDiagnosticPrinter 
+      = new TextDiagnosticPrinter( llvm::outs(),
+                                   &diagnosticOptions ) ;
 
-   TextDiagnosticPrinter *DiagClient =
-     new TextDiagnosticPrinter(llvm::errs(), new DiagnosticOptions());
-   IntrusiveRefCntPtr<DiagnosticIDs> DiagID(new DiagnosticIDs());
-   IntrusiveRefCntPtr<DiagnosticsEngine> Diags(
-       new DiagnosticsEngine(DiagID, &CI.getDiagnosticOpts(), DiagClient));
+   llvm::IntrusiveRefCntPtr<DiagnosticIDs> pDiagIDs ;
 
-   std::unique_ptr<CompilerInstance> Clang(new CompilerInstance());
+   DiagnosticsEngine * pDiagnosticsEngine 
+      = new DiagnosticsEngine( pDiagIDs,
+                               &diagnosticOptions,
+                               pTextDiagnosticPrinter ) ;
+
+   LangOptions languageOptions ;
 
    // Allow C++ code (https://github.com/loarabia/Clang-tutorial/blob/master/CIrewriter.cpp)
-   Clang->getLangOpts().GNUMode          = 1 ;
-   Clang->getLangOpts().CXXExceptions    = 1 ;
-   Clang->getLangOpts().RTTI             = 1 ;
-   Clang->getLangOpts().Bool             = 1 ;
-   Clang->getLangOpts().CPlusPlus        = 1 ;
-   Clang->getLangOpts().WChar            = 1 ; // stdlib.h and friends want wchar_t to be defined by the compiler in C++ mode.
-   //Clang->getLangOpts().NoBuiltin        = 0 ;
+   languageOptions.GNUMode          = 1 ;
+   languageOptions.CXXExceptions    = 1 ;
+   languageOptions.RTTI             = 1 ;
+   languageOptions.Bool             = 1 ;
+   languageOptions.CPlusPlus        = 1 ;
+   languageOptions.WChar            = 1 ; // stdlib.h and friends want wchar_t to be defined by the compiler in C++ mode.
+   //languageOptions.NoBuiltin        = 0 ;
 
-   Clang->setInvocation(CInvok.release());
-   Clang->setDiagnostics(Diags.get());
+   FileSystemOptions fileSystemOptions ;
 
-   Clang->getInvocation().getTargetOpts().Triple = llvm::sys::getDefaultTargetTriple() ;
+   FileManager fileManager( fileSystemOptions ) ;
 
-   Clang->setTarget(TargetInfo::CreateTargetInfo(
-       Clang->getDiagnostics(), Clang->getInvocation().TargetOpts));
-   Clang->createFileManager();
-   Clang->createSourceManager(Clang->getFileManager());
-   Clang->createPreprocessor(TU_Complete);
+   SourceManager sourceManager( *pDiagnosticsEngine,
+                                fileManager ) ;
 
-   Rewriter TheRewriter ;
+   TargetOptions targetOptions ;
 
-   #if defined REWRITER
-   // A Rewriter helps us manage the code rewriting task.
-   TheRewriter.setSourceMgr( sourceManager, languageOptions ) ;
-   #endif
+   targetOptions.Triple = llvm::sys::getDefaultTargetTriple() ;
 
-   Clang->createASTContext();
+   TargetInfo * pTargetInfo = TargetInfo::CreateTargetInfo( *pDiagnosticsEngine,
+                                                            &targetOptions ) ;
 
-   MyASTConsumer astConsumer( *Clang, TheRewriter ) ;
+   HeaderSearch headerSearch( headerSearchOptions,
+                              sourceManager,
+                              *pDiagnosticsEngine,
+                              languageOptions,
+                              pTargetInfo ) ;
 
-   Clang->getDiagnosticClient().BeginSourceFile(Clang->getLangOpts(),
-                                                &Clang->getPreprocessor());
-   Clang->setASTConsumer( &astConsumer );
-   Clang->createSema( TU_Complete, nullptr );
+   CompilerInstance compInst ;
 
-   ParseAST(Clang->getSema());
+   Preprocessor preprocessor( pOpts,
+                              *pDiagnosticsEngine,
+                              languageOptions,
+                              pTargetInfo,
+                              sourceManager,
+                              headerSearch,
+                              compInst ) ;
 
-   Clang->getDiagnosticClient().EndSourceFile() ;
+   FrontendOptions frontendOptions ;
+   //frontendOptions.SkipFunctionBodies = 1 ;
 
-   #if defined CLASSVISITOR
-      g_depMap.dump() ;
+   InitializePreprocessor( preprocessor,
+                           *pOpts,
+                           *headerSearchOptions,
+                           frontendOptions ) ;
 
-      if ( g_out == &g_outFile )
-      {
-         g_outFile.close() ;
-      }
-   #elif defined REWRITER
-      // At this point the rewriter's buffer should be full with the rewritten
-      // file contents.
-      const RewriteBuffer * RewriteBuf =
-          TheRewriter.getRewriteBufferFor( sourceManager.getMainFileID() ) ;
+   const FileEntry * pFile = fileManager.getFile( argv[optind] ) ;
+   
+   if ( pFile )
+   {
+      sourceManager.createMainFileID( pFile ) ;
 
-      if ( RewriteBuf )
-      {
-         llvm::outs() << string( RewriteBuf->begin(), RewriteBuf->end() ) ;
-      }
-      else
-      {
-         cout << "file unchanged: " << argv[optind] << endl ;
-      }
-   #endif
+      Rewriter TheRewriter ;
+
+      #if defined REWRITER
+      // A Rewriter helps us manage the code rewriting task.
+      TheRewriter.setSourceMgr( sourceManager, languageOptions ) ;
+      #endif
+
+      IdentifierTable identifierTable( languageOptions ) ;
+
+      SelectorTable selectorTable ;
+
+      Builtin::Context builtinContext ;
+
+      builtinContext.InitializeTarget( *pTargetInfo ) ;
+      //builtinContext.InitializeBuiltins( identifierTable, languageOptions ) ;
+
+      ASTContext * pASTcontext = new ASTContext( languageOptions,
+                                                 sourceManager,
+                                                 pTargetInfo,
+                                                 identifierTable,
+                                                 selectorTable,
+                                                 builtinContext,
+                                                 0 /* size_reserve*/ ) ;
+
+      compInst.setASTContext( pASTcontext ) ;
+
+      MyASTConsumer astConsumer( compInst, TheRewriter ) ;
+
+      pTextDiagnosticPrinter->BeginSourceFile( languageOptions, &preprocessor ) ;
+
+      ParseAST( preprocessor, &astConsumer, *pASTcontext ) ;
+
+      pTextDiagnosticPrinter->EndSourceFile() ;
+
+      #if defined CLASSVISITOR
+         g_depMap.dump() ;
+
+         if ( g_out == &g_outFile )
+         {
+            g_outFile.close() ;
+         }
+      #elif defined REWRITER
+         // At this point the rewriter's buffer should be full with the rewritten
+         // file contents.
+         const RewriteBuffer * RewriteBuf =
+             TheRewriter.getRewriteBufferFor( sourceManager.getMainFileID() ) ;
+
+         if ( RewriteBuf )
+         {
+            llvm::outs() << string( RewriteBuf->begin(), RewriteBuf->end() ) ;
+         }
+         else
+         {
+            cout << "file unchanged: " << argv[optind] << endl ;
+         }
+      #endif
+   }
 
    return 0 ;
 }
