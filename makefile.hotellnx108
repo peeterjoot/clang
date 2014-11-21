@@ -2,11 +2,9 @@
 # local clang build related stuff:
 
 #-------------------------------------------------
-# Built two versions of clang, one for debugging
-# into rewritersample.cpp:
+# The 108 build of clang is done in debug mode.
 #-------------------------------------------------
 GCCPATH=$(HOME)/toolchain492
-#GCCPATH=$(HOME)/toolchain492.opt
 
 CLANGPATH=$(GCCPATH)
 
@@ -16,12 +14,7 @@ LDFLAGS += -Wl,-rpath-link,$(CLANGPATH)/lib64:$(CLANGPATH)/lib
 
 export LD_LIBRARY_PATH := $(CLANGPATH)/lib64:$(CLANGPATH)/lib
 
-#CXX := $(GCCPATH)/bin/g++
-CXX := $(CLANGPATH)/bin/clang++
+CXX := $(CLANGPATH)/bin/g++
+#CXX := $(CLANGPATH)/bin/clang++
 
 LLVM_BIN_PATH := $(CLANGPATH)/bin/
-
-#CONFIG_RELEASE = Release+Asserts
-
-#CFLAGS += -gdwarf-2
-
