@@ -1,0 +1,14 @@
+CXX := g++
+#CXX := $(CLANGPATH)/bin/clang++
+LDFLAGS += -ldl
+
+CLANGPATH=$(HOME)/clang350.debug
+
+LDFLAGS += -L$(CLANGPATH)/lib
+LDFLAGS += -Wl,-rpath,$(CLANGPATH)/lib
+LDFLAGS += -Wl,-rpath-link,$(CLANGPATH)/lib
+
+export LD_LIBRARY_PATH := $(CLANGPATH)/lib
+
+LLVM_BIN_PATH := $(CLANGPATH)/bin/
+
