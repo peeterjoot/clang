@@ -8,7 +8,7 @@ include makefile.$(HOSTNAME)
 
 CFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --cxxflags)
 #CFLAGS := $(filter-out -fno-exceptions,$(CFLAGS))
-LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
+CLANG_LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
 
 LLVMSRC := $(shell $(LLVM_BIN_PATH)/llvm-config --src-root)
 LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
@@ -28,19 +28,46 @@ LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
 CFLAGS := $(subst -O3,,$(CFLAGS))
 #-------------------------------------------------
 
-LDFLAGS += -lclangFrontendTool -lclangFrontend -lclangDriver 
-LDFLAGS += -lclangSerialization -lclangCodeGen -lclangParse 
-LDFLAGS += -lclangSema -lclangStaticAnalyzerFrontend 
-LDFLAGS += -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore 
-LDFLAGS += -lclangAnalysis -lclangARCMigrate 
-LDFLAGS += -lclangRewriteCore 
-LDFLAGS += -lclangEdit -lclangAST -lclangLex -lclangBasic
-LDFLAGS += -lLLVMMCParser
-LDFLAGS += -lLLVMBitReader
-LDFLAGS += -lLLVMOption
-LDFLAGS += -lLLVMTransformUtils
+#LDFLAGS += $(CLANG_LDFLAGS)
+#LDFLAGS += -lclangFrontendTool -lclangFrontend -lclangDriver 
+#LDFLAGS += -lclangSerialization -lclangCodeGen -lclangParse 
+#LDFLAGS += -lclangSema -lclangStaticAnalyzerFrontend 
+#LDFLAGS += -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore 
+#LDFLAGS += -lclangAnalysis -lclangARCMigrate 
+#LDFLAGS += -lclangEdit -lclangAST -lclangLex -lclangBasic
+#LDFLAGS += -lLLVMMCParser
+#LDFLAGS += -lLLVMBitReader
+#LDFLAGS += -lLLVMOption
+#LDFLAGS += -lLLVMTransformUtils
+#LDFLAGS += -lclangRewrite
+LDFLAGS += -Wl,--start-group
+LDFLAGS += -lclangAST
+LDFLAGS += -lclangAnalysis
+LDFLAGS += -lclangBasic
+LDFLAGS += -lclangDriver
+LDFLAGS += -lclangEdit
+LDFLAGS += -lclangFrontend
+LDFLAGS += -lclangFrontendTool
+LDFLAGS += -lclangLex
+LDFLAGS += -lclangParse
+LDFLAGS += -lclangSema
+LDFLAGS += -lclangEdit
+LDFLAGS += -lclangASTMatchers
+LDFLAGS += -lclangRewrite
+LDFLAGS += -lclangRewriteFrontend
+LDFLAGS += -lclangStaticAnalyzerFrontend
+LDFLAGS += -lclangStaticAnalyzerCheckers
+LDFLAGS += -lclangStaticAnalyzerCore
+LDFLAGS += -lclangSerialization
+LDFLAGS += -lclangTooling
+LDFLAGS += -Wl,--end-group
+LDFLAGS += `$(LLVM_BIN_PATH)llvm-config --ldflags --libs --system-libs`
+LDFLAGS += -ldl
+LDFLAGS += -lpthread
+LDFLAGS += -lncurses
+LDFLAGS += -lz
 
-LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
+#LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
 EXES += tooling_sample
 #EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
