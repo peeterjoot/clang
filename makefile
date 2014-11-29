@@ -28,18 +28,6 @@ LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
 CFLAGS := $(subst -O3,,$(CFLAGS))
 #-------------------------------------------------
 
-#LDFLAGS += $(CLANG_LDFLAGS)
-#LDFLAGS += -lclangFrontendTool -lclangFrontend -lclangDriver 
-#LDFLAGS += -lclangSerialization -lclangCodeGen -lclangParse 
-#LDFLAGS += -lclangSema -lclangStaticAnalyzerFrontend 
-#LDFLAGS += -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore 
-#LDFLAGS += -lclangAnalysis -lclangARCMigrate 
-#LDFLAGS += -lclangEdit -lclangAST -lclangLex -lclangBasic
-#LDFLAGS += -lLLVMMCParser
-#LDFLAGS += -lLLVMBitReader
-#LDFLAGS += -lLLVMOption
-#LDFLAGS += -lLLVMTransformUtils
-#LDFLAGS += -lclangRewrite
 LDFLAGS += -Wl,--start-group
 LDFLAGS += -lclangAST
 LDFLAGS += -lclangAnalysis
@@ -70,8 +58,8 @@ LDFLAGS += -lz
 #LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
 EXES += tooling_sample
-#EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
-#EXES += $(LLVMPREFIX)/bin/gblkToGmblk
+EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
+EXES += $(LLVMPREFIX)/bin/gblkToGmblk
 
 CFLAGS += -std=c++11
 
@@ -84,21 +72,21 @@ tooling_sample.o : depmap.h dumper.h
 %.o : %.cpp
 	$(CXX) -c $< $(CFLAGS)
 
-#$(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
-#	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
-#
-#$(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
-#	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
-#
+$(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
+	$(CXX) $< -o $@ $(LDFLAGS)
+
+$(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
+	$(CXX) $< -o $@ $(LDFLAGS)
+
 tooling_sample: tooling_sample.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
-#stripGmblkVoidPPcast.o : RenameMethod.cpp
-#	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -DGBLK_TO_GMBLK -o $@
-#
-#gblkToGmblk.o : RenameMethod.cpp
-#	$(CXX) -c $< $(CFLAGS) -o $@
-#
+stripGmblkVoidPPcast.o : RenameMethod.cpp
+	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -DGBLK_TO_GMBLK -o $@
+
+gblkToGmblk.o : RenameMethod.cpp
+	$(CXX) -c $< $(CFLAGS) -o $@
+
 #isystem.h : isystem.pl
 #	$< $(CXX) > $@
 
