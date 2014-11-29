@@ -3,12 +3,12 @@
 
 class dependencyMap
 {
-   typedef set< string >              stringSet ;
-   typedef map< string, stringSet >   dependencyContainerType ;
+   typedef std::set< std::string >              stringSet ;
+   typedef std::map< std::string, stringSet >   dependencyContainerType ;
 
    dependencyContainerType m_typeDeps ;
 
-   void collectAllDeps( stringSet & allDeps, const string & theTypeName )
+   void collectAllDeps( stringSet & allDeps, const std::string & theTypeName )
    {
       auto & setOfDepsForThisType = m_typeDeps[ theTypeName ] ;
 
@@ -28,19 +28,22 @@ class dependencyMap
    /**
       dump the dependency tree.
     */
-   void dumpOne( const string t, stringSet & seen, const string & indent )
+   void dumpOne( const std::string t, stringSet & seen, const std::string & indent )
    {
-      *g_out << indent << t << " : " << endl ;
-      const string moreindent = indent + "   " ;
+      llvm::outs() << indent << t << " : " << "\n" ;
+      const std::string moreindent = indent + "   " ;
 
       for ( auto & v : m_typeDeps[ t ] )
       {
+#if 0
          if ( v == g_typeSuppressed )
          {
          }
-         else if ( seen.count( v ) )
+         else 
+#endif
+            if ( seen.count( v ) )
          {
-            *g_out << moreindent << v << endl ;
+            llvm::outs() << moreindent << v << "\n" ;
          }
          else
          {
@@ -55,7 +58,7 @@ public:
    /**
       A pair of types.  The type and something that it depends on.
     */
-   void insertDependency( const string & theTypeName, const string & theTypeDep )
+   void insertDependency( const std::string & theTypeName, const std::string & theTypeDep )
    {
       m_typeDeps[ theTypeName ].insert( theTypeDep ) ;
    }
@@ -65,15 +68,16 @@ public:
     */
    void dump( )
    {
-      ifstream file ; // Will let destructor cleanup ifstream object.
+      std::ifstream file ; // Will let destructor cleanup ifstream object.
 
+#if 0
       if ( g_symbolfile )
       {
          file.open( g_symbolfile ) ;
 
          if ( file.is_open() )
          {
-            string line ;
+            std::string line ;
 
             while ( file >> line )
             {
@@ -84,10 +88,11 @@ public:
          }
          else
          {
-            cout << "Failed to process --symbolfile==" << g_symbolfile << endl ;
+            cout << "Failed to process --symbolfile==" << g_symbolfile << "\n" ;
          }
       }
       else
+#endif
       {
          /* didn't find a list of specific symbols of interest.  Dump all symbols */
          for ( auto & k : m_typeDeps )
@@ -106,7 +111,7 @@ public:
    {
       for ( auto & k : m_typeDeps )
       {
-         *g_out << k.first << " : " ;
+         llvm::outs() << k.first << " : " ;
 
          stringSet s ;
 
@@ -116,15 +121,17 @@ public:
 
          for ( auto & v : s )
          {
+#if 0
             if ( g_typeSuppressed != v )
+#endif
             {
-               *g_out << commaOrBlank << v ;
+               llvm::outs() << commaOrBlank << v ;
 
                commaOrBlank = ", " ;
             }
          }
 
-         *g_out << endl ;
+         llvm::outs() << "\n" ;
       }
    }
 
@@ -134,7 +141,7 @@ public:
       {
          for ( auto & v : m_typeDeps[ k.first ] )
          {
-            *g_out << v << endl ;
+            llvm::outs() << v << "\n" ;
          }
       }
    }
@@ -143,20 +150,32 @@ public:
    {
       for ( auto & k : m_typeDeps )
       {
-         *g_out << k.first << " : " ;
+         llvm::outs() << k.first << " : " ;
 
          const char * commaOrBlank = "" ;
 
          for ( auto & v : m_typeDeps[ k.first ] )
          {
-            *g_out << commaOrBlank << v ;
+            llvm::outs() << commaOrBlank << v ;
 
             commaOrBlank = ", " ;
          }
 
-         *g_out << endl ;
+         llvm::outs() << "\n" ;
       }
    }
-} g_depMap ;
 
-bool g_quietDeps = true ;
+   ~dependencyMap()
+   {
+      dump() ;
+
+#if 0
+      if ( g_out == &g_outFile )
+      {
+         g_outFile.close() ;
+      }
+#endif
+   }
+} ;
+
+// bool g_quietDeps = true ;
