@@ -1,12 +1,12 @@
 [
 {
-  "directory": "/home/peeterj/.physicsplay/rewriter",
-  "command": "/home/peeterj/clang/optimized48rt/bin/clang++ -c tt.C -Wno-parentheses",
-  "file": "/home/peeterj/.physicsplay/rewriter/tt.C"
+  "directory": "/home/peeterj/clang",
+  "command": "/home/peeterj/clang342/bin/clang++ -c tt.C -Wno-parentheses",
+  "file": "/home/peeterj/clang/tt.C"
 },
 {
-  "directory": "/home/peeterj/.physicsplay/rewriter",
-  "command": "/home/peeterj/clang/optimized48rt/bin/clang++ -c uu.C -Wno-parentheses",
-  "file": "/home/peeterj/.physicsplay/rewriter/uu.C"
+  "directory": "/home/peeterj/clang",
+  "command": "/home/peeterj/clang342/bin/clang++ -c uu.C -Wno-parentheses",
+  "file": "/home/peeterj/clang/uu.C"
 }
 ]
