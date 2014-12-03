@@ -305,7 +305,7 @@ private:
 int main(int argc, const char **argv) {
    // First see if we can create the compile command line from the
    // positional parameters after "--".
-   OwningPtr<CompilationDatabase> Compilations(
+   std::unique_ptr<CompilationDatabase> Compilations(
       FixedCompilationDatabase::loadFromCommandLine(argc, argv));
 
    // Do normal command line handling from the rest of the arguments.
@@ -382,5 +382,5 @@ int main(int argc, const char **argv) {
       &CallCallback);
 #endif
 
-   return Tool.runAndSave(newFrontendActionFactory(&Finder));
+   return Tool.runAndSave(newFrontendActionFactory(&Finder).get());
 }

@@ -8,7 +8,7 @@ include makefile.$(HOSTNAME)
 
 CFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --cxxflags)
 #CFLAGS := $(filter-out -fno-exceptions,$(CFLAGS))
-LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
+CLANG_LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --ldflags)
 
 LLVMSRC := $(shell $(LLVM_BIN_PATH)/llvm-config --src-root)
 LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
@@ -28,31 +28,38 @@ LLVMPREFIX := $(shell $(LLVM_BIN_PATH)/llvm-config --prefix)
 CFLAGS := $(subst -O3,,$(CFLAGS))
 #-------------------------------------------------
 
-LDFLAGS += -lclangFrontendTool -lclangFrontend -lclangDriver 
-LDFLAGS += -lclangSerialization -lclangCodeGen -lclangParse 
-LDFLAGS += -lclangSema -lclangStaticAnalyzerFrontend 
-LDFLAGS += -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore 
-LDFLAGS += -lclangAnalysis -lclangARCMigrate 
-LDFLAGS += -lclangRewriteCore 
-LDFLAGS += -lclangEdit -lclangAST -lclangLex -lclangBasic
-LDFLAGS += -lLLVMMCParser
-LDFLAGS += -lLLVMBitReader
-LDFLAGS += -lLLVMOption
-LDFLAGS += -lLLVMTransformUtils
+LDFLAGS += -Wl,--start-group
+LDFLAGS += -lclangAST
+LDFLAGS += -lclangAnalysis
+LDFLAGS += -lclangBasic
+LDFLAGS += -lclangDriver
+LDFLAGS += -lclangEdit
+LDFLAGS += -lclangFrontend
+LDFLAGS += -lclangFrontendTool
+LDFLAGS += -lclangLex
+LDFLAGS += -lclangParse
+LDFLAGS += -lclangSema
+LDFLAGS += -lclangEdit
+LDFLAGS += -lclangASTMatchers
+LDFLAGS += -lclangRewrite
+LDFLAGS += -lclangRewriteFrontend
+LDFLAGS += -lclangStaticAnalyzerFrontend
+LDFLAGS += -lclangStaticAnalyzerCheckers
+LDFLAGS += -lclangStaticAnalyzerCore
+LDFLAGS += -lclangSerialization
+LDFLAGS += -lclangTooling
+LDFLAGS += -Wl,--end-group
+LDFLAGS += `$(LLVM_BIN_PATH)llvm-config --ldflags --libs --system-libs`
+LDFLAGS += -ldl
+LDFLAGS += -lpthread
+LDFLAGS += -lncurses
+LDFLAGS += -lz
 
-LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
+#LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
-EXES += classvisitor
-EXES += globalvisitor
-EXES += rewriter
-EXES += testit
-EXES += dumper
-EXES += memberdumper
-#EXES += LockUnlockChecker.so
-#EXES += $(LLVMPREFIX)/bin/ClangCheck
+EXES += tooling_sample
 EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
 EXES += $(LLVMPREFIX)/bin/gblkToGmblk
-#CLEAN_EXES += rewritersample
 
 CFLAGS += -std=c++11
 
@@ -60,47 +67,18 @@ CFLAGS += -std=c++11
 
 all: $(EXES)
 
-classvisitor.o : classvisitor.h visitor.h isystem.h depmap.h
-globalvisitor.o : classvisitor.h globalcons.h isystem.h
-rewriter.o : classvisitor.h rewriter.h isystem.h
-dumper.o : classvisitor.h dumper.h isystem.h
-memberdumper.o : classvisitor.h memberdumper.h isystem.h
+tooling_sample.o : depmap.h dumper.h
 
 %.o : %.cpp
 	$(CXX) -c $< $(CFLAGS)
 
-testit: testit.o
-	$(CXX) $< -o $@ $(LDFLAGS)
-
-dumper: dumper.o
-	$(CXX) $< -o $@ $(LDFLAGS)
-
-# exe doesn't work unless executed from the compiler prefix bin dir
-#$(LLVMPREFIX)/bin/ClangCheck : ClangCheck
-#	cp $< $@
-
-#ClangCheck: ClangCheck.o
-#	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport
-
 $(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
-	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
+	$(CXX) $< -o $@ $(LDFLAGS)
 
 $(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
-	$(CXX) $< -o $@ $(LDFLAGS) -lclangFrontend -lclangSerialization -lclangDriver -lclangTooling -lclangParse -lclangSema -lclangAnalysis -lclangRewriteFrontend -lclangRewriteCore -lclangEdit -lclangAST -lclangLex -lclangBasic -lLLVMSupport -lclangASTMatchers
-
-classvisitor: classvisitor.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
-memberdumper: memberdumper.o
-	$(CXX) $< -o $@ $(LDFLAGS)
-
-rewriter: rewriter.o
-	$(CXX) $< -o $@ $(LDFLAGS)
-
-globalvisitor: globalvisitor.o
-	$(CXX) $< -o $@ $(LDFLAGS)
-
-rewritersample: rewritersample.o
+tooling_sample: tooling_sample.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 stripGmblkVoidPPcast.o : RenameMethod.cpp
@@ -109,17 +87,8 @@ stripGmblkVoidPPcast.o : RenameMethod.cpp
 gblkToGmblk.o : RenameMethod.cpp
 	$(CXX) -c $< $(CFLAGS) -o $@
 
-#	g++ -shared -fPIC `llvm-config --cxxflags` -I`llvm-config --src-root`/tools/clang/include \
-#		-I`llvm-config --obj-root`/tools/clang/include -o LockUnlockChecker.so LockUnlockChecker.cpp
-#
-LockUnlockChecker.so: LockUnlockChecker.o
-	$(CXX) -shared $< -o $@ $(LDFLAGS)
-
-isystem.h : isystem.pl
-	$< $(CXX) > $@
-
-ClangCheck.cpp : $(LLVMSRC)/tools/clang/tools/clang-check/ClangCheck.cpp
-	cp $< $@
+#isystem.h : isystem.pl
+#	$< $(CXX) > $@
 
 clean:
 	rm -rf *.o *.ll $(EXES) $(CLEAN_EXES) isystem.h
