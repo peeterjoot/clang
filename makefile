@@ -82,10 +82,10 @@ tooling_sample: tooling_sample.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 stripGmblkVoidPPcast.o : RenameMethod.cpp
-	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -DGBLK_TO_GMBLK -o $@
+	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -o $@
 
 gblkToGmblk.o : RenameMethod.cpp
-	$(CXX) -c $< $(CFLAGS) -o $@
+	$(CXX) -c $< $(CFLAGS) -DGBLK_TO_GMBLK -o $@
 
 #isystem.h : isystem.pl
 #	$< $(CXX) > $@

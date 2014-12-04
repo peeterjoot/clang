@@ -2,7 +2,7 @@
 # local clang build related stuff:
 
 GCCPATH=$(HOME)/toolchain492
-CLANGPATH=$(HOME)/clang342
+CLANGPATH=$(HOME)/toolchain492.clang.debug
 
 LDFLAGS += -L$(GCCPATH)/lib64 -L$(CLANGPATH)/lib
 LDFLAGS += -Wl,-rpath,$(GCCPATH)/lib64:$(CLANGPATH)/lib
