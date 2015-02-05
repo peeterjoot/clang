@@ -1,0 +1,40 @@
+I found that the solution wasn't to add any -I paths for things that
+the compiler should already know how to find.  Instead, I had to copy
+the clang-libtooling tool, into the install path that I'd picked
+for my clang installation.  For example if I'd built clang with:
+
+   configure --prefix=$HOME/myclanginstall
+
+and want to run the tool on a file that uses standard library headers like
+
+   $ cat withstdio.cpp
+   #include <stdio.h>
+
+   int main()
+   {
+      printf("blah\n") ;
+
+      return 0 ;
+   }
+
+Then the clang tool failed to find the dependencies of headers like stdio.h.  For example:
+
+   $ ../tooling_sample withstdio.cpp 2>&1 | head -3
+   ** Creating AST consumer for: withstdio.cpp
+   In file included from withstdio.cpp:1:
+   /usr/include/stdio.h:34:11: fatal error: 'stddef.h' file not found
+
+(can't find stuff in standard places)
+
+Once the tool is copied to the clang install directory:
+
+   $ cp ../tooling_sample $HOME/myclanginstall/bin/
+
+I am now able to run the tool:
+
+   $ $HOME/myclanginstall/bin/tooling_sample withstdio.cpp 2>&1 | head -3
+   ** Creating AST consumer for: withstdio.cpp
+   ** EndSourceFileAction for: withstdio.cpp
+   #include <stdio.h>
+
+(no more errors processing stdio.h)
