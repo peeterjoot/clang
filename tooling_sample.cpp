@@ -1,13 +1,17 @@
 //------------------------------------------------------------------------------
-// Tooling sample. Demonstrates:
-//
-// * How to write a simple source tool using libTooling.
-// * How to use RecursiveASTVisitor to find interesting AST nodes.
-// * How to use the Rewriter API to rewrite the source code.
-//
-// Eli Bendersky (eliben@gmail.com)
-// This code is in the public domain
+// The main() for this code, and the MyASTConsumer, ASTConsumer classes that drive the underlying AST methods
+// were forked from:{
 //------------------------------------------------------------------------------
+   //------------------------------------------------------------------------------
+   // Tooling sample. Demonstrates:
+   //
+   // * How to write a simple source tool using libTooling.
+   // * How to use RecursiveASTVisitor to find interesting AST nodes.
+   // * How to use the Rewriter API to rewrite the source code.
+   //
+   // Eli Bendersky (eliben@gmail.com)
+   // This code is in the public domain
+   //------------------------------------------------------------------------------
 #include <sstream>
 #include <string>
 
@@ -244,54 +248,6 @@ public:
      insertIntoMap( s, thisFieldQualType ) ;
 
      return true ;
-  }
-#elif defined ELI_VISITOR
-  bool VisitStmt(Stmt *s) {
-    // Only care about If statements.
-    if (isa<IfStmt>(s)) {
-      IfStmt *IfStatement = cast<IfStmt>(s);
-      Stmt *Then = IfStatement->getThen();
-
-      TheRewriter.InsertText(Then->getLocStart(), "// the 'if' part\n", true,
-                             true);
-
-      Stmt *Else = IfStatement->getElse();
-      if (Else)
-        TheRewriter.InsertText(Else->getLocStart(), "// the 'else' part\n",
-                               true, true);
-    }
-
-    return true;
-  }
-
-  bool VisitFunctionDecl(FunctionDecl *f) {
-    // Only function definitions (with bodies), not declarations.
-    if (f->hasBody()) {
-      Stmt *FuncBody = f->getBody();
-
-      // Type name as string
-      QualType QT = f->getReturnType();
-      std::string TypeStr = QT.getAsString();
-
-      // Function name
-      DeclarationName DeclName = f->getNameInfo().getName();
-      std::string FuncName = DeclName.getAsString();
-
-      // Add comment before
-      std::stringstream SSBefore;
-      SSBefore << "// Begin function " << FuncName << " returning " << TypeStr
-               << "\n";
-      SourceLocation ST = f->getSourceRange().getBegin();
-      TheRewriter.InsertText(ST, SSBefore.str(), true, true);
-
-      // And after
-      std::stringstream SSAfter;
-      SSAfter << "\n// End function " << FuncName;
-      ST = FuncBody->getLocEnd().getLocWithOffset(1);
-      TheRewriter.InsertText(ST, SSAfter.str(), true, true);
-    }
-
-    return true;
   }
 #elif defined MEMBERDUMPER
   bool myVisitFieldDecl( const std::string & classname, FieldDecl * f )

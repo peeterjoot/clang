@@ -4,11 +4,6 @@
 //
 //=- examples/rename-method/RenameMethod.cpp ------------------------------===//
 //
-//                               The LLVM Compiler Infrastructure
-//
-// This file is distributed under the University of Illinois Open Source
-// License. See LICENSE.TXT for details.
-//
 //===----------------------------------------------------------------------===//
 //
 // A small example tool that uses AST matchers to find calls to the Get() method
