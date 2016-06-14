@@ -14,6 +14,7 @@
    //------------------------------------------------------------------------------
 #include <sstream>
 #include <string>
+#include <memory>
 
 #include "clang/AST/AST.h"
 #include "clang/AST/ASTConsumer.h"
@@ -119,9 +120,9 @@ public:
 
   void insertIntoMap( const std::string & theTypeName, const QualType & q, const std::string * pAsString = NULL )
   {
+  #if 0
      const Type * t = q.getTypePtr() ;
 
-  #if 0
      if ( g_quietDeps )
      {
         if ( t->isArithmeticType() ||
@@ -484,11 +485,12 @@ public:
     TheRewriter.getEditBuffer(SM.getMainFileID()).write(llvm::outs());
   }
 
-  ASTConsumer *CreateASTConsumer(CompilerInstance &CI,
+  // This now assumes clang >= 3.8
+  std::unique_ptr<clang::ASTConsumer> CreateASTConsumer(CompilerInstance &CI,
                                  StringRef file) override {
     llvm::errs() << "** Creating AST consumer for: " << file << "\n";
     TheRewriter.setSourceMgr(CI.getSourceManager(), CI.getLangOpts());
-    return new MyASTConsumer(TheRewriter, CI);
+    return llvm::make_unique< MyASTConsumer >(TheRewriter, CI);
   }
 
 private:

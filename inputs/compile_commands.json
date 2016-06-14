@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/home/peeterj/clang/inputs",
-  "command": "/home/peeterj/toolchain492.clang.debug/bin/clang withstdio.cpp",
-  "file": "/home/peeterj/clang/inputs/withstdio.cpp"
+  "directory": "/home/pjoot/clang/inputs",
+  "command": "/usr/bin/clang withstdio.cpp",
+  "file": "/home/pjoot/clang/inputs/withstdio.cpp"
 }
 ]

@@ -1,4 +1,8 @@
 # compilation options are actually specified in compile_commands.json.  This makefile is just a dummy to invoke the tool.
 
+#tool=/home/peeterj/toolchain492.clang.debug/bin/tooling_sample
+include ../makefile.$(HOSTNAME)
+TOOL=$(CLANGPATH)/bin/tooling_sample
+
 withstdio.o : withstdio.cpp
-	/home/peeterj/toolchain492.clang.debug/bin/tooling_sample withstdio.cpp
+	$(TOOL) withstdio.cpp
