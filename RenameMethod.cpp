@@ -153,9 +153,11 @@ std::string decl2str( const Expr *d, const SourceManager *sm )
    return r ;
 }
 
-class gmblkModifier : public MatchFinder::MatchCallback {
+#if defined GMBLK_VOIDPP_MODE 
+class voidPPCastStrippingModifier : public MatchFinder::MatchCallback
+{
 public:
-   gmblkModifier(Replacements *Replace) : Replace(Replace) {}
+   voidPPCastStrippingModifier(Replacements *Replace) : Replace(Replace) {}
 
    // This method is called every time the registered matcher matches
    // on the AST.
@@ -163,7 +165,7 @@ public:
       const CallExpr *M = Result.Nodes.getStmtAs<CallExpr>("x");
       const Expr * a = M->getArg( 3 ) ;
 
-      // strip out the (presumed 'void **' casting) in sqlogmblk calls.
+      // strip out the (presumed 'void **' casting) in XXgmblk calls.
       if ( const CStyleCastExpr * v = dyn_cast<CStyleCastExpr>( a ) )
       {
 #if 0
@@ -205,43 +207,40 @@ private:
    Replacements *Replace;
 
 };
+#endif
 
-class gblkModifier : public MatchFinder::MatchCallback {
+class renameAndAddParamModifier : public MatchFinder::MatchCallback
+{
 public:
-   gblkModifier(Replacements *Replace) : Replace(Replace) {}
+   renameAndAddParamModifier(Replacements *Replace, const int n, const char * replacement, const char * insertion )
+      : Replace(Replace),
+        InsertAfterParam{n},
+        ReplacementFunctionName{replacement},
+        InsertionText{insertion}
+   {}
 
    // This method is called every time the registered matcher matches
    // on the AST.
    virtual void run(const MatchFinder::MatchResult &Result) {
       const CallExpr *M = Result.Nodes.getStmtAs<CallExpr>("y");
-      //M->dump() ;
-      const Expr * a = M->getArg( 2 ) ;
+      M->dump() ;
+      const Expr * a = M->getArg( InsertAfterParam ) ;
 
-      // 
-      // shortening and lengthening in two separate replacements seemed not to be working:
-      //       -    rc = sqlogblk(heapptr, size, (void **)replypp);
-      //       +    rc = sqlogmblk(heapptr, size, SQLO_MEM_DEFAULT, p);
-      //
-      // ... probably ought to be doing a single pass replacement of the whole call, renaming, inserting param, and removing the cast.
-      //
-      // However, the issue turns out to not be in this Match callback but the gmblk callback above.
-      //
-      // Note that we don't have to strip the void ** here, since the other Matcher for gmblk actually kicks in after this one (if not excluded.)
-      //
       std::string replacement = decl2str( a, Result.SourceManager ) ; 
 
       if ( replacement.length() )
       {
-         replacement = "SQLO_MEM_DEFAULT, " + replacement ;
+std::cerr << replacement << '\n' ;
+         replacement = InsertionText + replacement ;
 
          // rename the function:
          Replace->insert(
             Replacement(*Result.SourceManager,
                               CharSourceRange::getTokenRange(
                                  SourceRange(M->getLocStart())),
-                              "sqlogmblk"));
+                              ReplacementFunctionName));
 
-         // and insert the SQLO_MEM_DEFAULT param
+         // and insert the additional param
          std::string orig = decl2str( a, Result.SourceManager ) ;
 
          Replace->insert(
@@ -251,42 +250,6 @@ public:
                               replacement)
             ) ;
       }
-#if 0
-      // strip out the (presumed 'void **' casting) in sqlogblk calls.
-      if ( const CStyleCastExpr * v = dyn_cast<CStyleCastExpr>( a ) )
-      {
-         //v->dump() ;
-         const Expr * theCastedValue = v->getSubExprAsWritten() ;
-         //theCastedValue->dump() ;
-
-         if ( theCastedValue )
-         {
-            std::string replacement = decl2str( theCastedValue, Result.SourceManager ) ; 
- 
-            if ( replacement.length() )
-            {
-               replacement = "SQLO_MEM_DEFAULT, " + replacement ;
-      
-               // rename the function:
-               Replace->insert(
-                  Replacement(*Result.SourceManager,
-                                    CharSourceRange::getTokenRange(
-                                       SourceRange(M->getLocStart())),
-                                    "sqlogmblk"));
-      
-               // and insert the SQLO_MEM_DEFAULT param, and strip the void ** cast:
-               std::string orig = decl2str( a, Result.SourceManager ) ;
-
-               Replace->insert(
-                  Replacement(*Result.SourceManager,
-                                    a->getLocStart(),
-                                    orig.length(),
-                                    replacement)
-                  ) ;
-            }
-         }
-      }
-#endif
    }
 
 private:
@@ -294,10 +257,16 @@ private:
    // transformations, deduplicate them and apply them to the code when
    // the tool has finished with all translation units.
    Replacements *Replace;
-};
+
+   int InsertAfterParam ;
+
+   const char * ReplacementFunctionName ;
+   const char * InsertionText ;
+} ;
 
 
-int main(int argc, const char **argv) {
+int main(int argc, const char **argv) 
+{
    // First see if we can create the compile command line from the
    // positional parameters after "--".
    std::unique_ptr<CompilationDatabase> Compilations(
@@ -312,8 +281,8 @@ int main(int argc, const char **argv) {
       // CMAKE_EXPORT_COMPILE_COMMANDS=ON to prepare your build directory to
       // be useable with clang tools.
       std::string ErrorMessage;
-      Compilations.reset(CompilationDatabase::loadFromDirectory(BuildPath,
-                                                                                             ErrorMessage));
+      std::unique_ptr< CompilationDatabase > c{ CompilationDatabase::loadFromDirectory(BuildPath, ErrorMessage) } ;
+      Compilations.swap( c ) ;
       if (!Compilations)
          llvm::report_fatal_error(ErrorMessage);
    }
@@ -321,23 +290,18 @@ int main(int argc, const char **argv) {
    RefactoringTool Tool(*Compilations, SourcePaths);
    ast_matchers::MatchFinder Finder;
 
-#if defined GMBLK_VOIDPP_MODE 
-   gmblkModifier gmblkCallBack(&Tool.getReplacements());
+#if 0
+   voidPPCastStrippingModifier voidppCallBack(&Tool.getReplacements());
    Finder.addMatcher(
             callExpr( callee(functionDecl(hasName("sqlogmblk"))) ).bind("x"),
-      &gmblkCallBack);
+      &voidppCallBack);
 
 #endif
-#if defined GBLK_TO_GMBLK
-   gblkModifier gblkCallBack(&Tool.getReplacements());
-   Finder.addMatcher(
-            callExpr( callee(functionDecl(hasName("sqlogblk"))) ).bind("y"),
-      &gblkCallBack);
 
+   renameAndAddParamModifier renamerCallBack(&Tool.getReplacements(), 1, "lz_mutex_lock_extended", "0" );
    Finder.addMatcher(
-            callExpr( callee(functionDecl(hasName("sqlogtblk"))) ).bind("y"),
-      &gblkCallBack);
-#endif
+            callExpr( callee(functionDecl(hasName("lz_mutex_lock"))) ).bind("y"),
+      &renamerCallBack);
 
 // original RenameMethod.cpp matchers (modified for current clang source):
 #if 0

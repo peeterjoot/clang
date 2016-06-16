@@ -48,6 +48,7 @@ LDFLAGS += -lclangStaticAnalyzerCheckers
 LDFLAGS += -lclangStaticAnalyzerCore
 LDFLAGS += -lclangSerialization
 LDFLAGS += -lclangTooling
+LDFLAGS += -lclangToolingCore
 LDFLAGS += -Wl,--end-group
 LDFLAGS += `$(LLVM_BIN_PATH)llvm-config --ldflags --libs --system-libs`
 LDFLAGS += -ldl
@@ -58,8 +59,9 @@ LDFLAGS += -lz
 #LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
 EXES += tooling_sample
-EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
-EXES += $(LLVMPREFIX)/bin/gblkToGmblk
+#EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
+#EXES += $(LLVMPREFIX)/bin/gblkToGmblk
+EXES += $(LLVMPREFIX)/bin/lzmutexRenamer
 
 CFLAGS += -std=c++11
 
@@ -72,20 +74,26 @@ tooling_sample.o : depmap.h dumper.h
 %.o : %.cpp
 	$(CXX) -c $< $(CFLAGS)
 
-$(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
-	$(CXX) $< -o $@ $(LDFLAGS)
+#$(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
+#	$(CXX) $< -o $@ $(LDFLAGS)
+#
+#$(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
+#	$(CXX) $< -o $@ $(LDFLAGS)
 
-$(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
+$(LLVMPREFIX)/bin/lzmutexRenamer : renamer.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 tooling_sample: tooling_sample.o
 	$(CXX) $< -o $@ $(LDFLAGS)
 
-stripGmblkVoidPPcast.o : RenameMethod.cpp
-	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -o $@
+renamer.o : RenameMethod.cpp
+	$(CXX) -c $< $(CFLAGS) -o $@
 
-gblkToGmblk.o : RenameMethod.cpp
-	$(CXX) -c $< $(CFLAGS) -DGBLK_TO_GMBLK -o $@
+#stripGmblkVoidPPcast.o : RenameMethod.cpp
+#	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -o $@
+
+#gblkToGmblk.o : RenameMethod.cpp
+#	$(CXX) -c $< $(CFLAGS) -DGBLK_TO_GMBLK -o $@
 
 #isystem.h : isystem.pl
 #	$< $(CXX) > $@
