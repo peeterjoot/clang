@@ -19,6 +19,7 @@
 #include "clang/Basic/SourceManager.h"
 #include "clang/Lex/Lexer.h"
 #include <iostream>
+#include <unordered_map>
 
 using namespace clang;
 using namespace clang::ast_matchers;
@@ -85,7 +86,7 @@ std::string decl2str( const Expr *d, const SourceManager *sm )
 class renameAndAddParamModifier : public MatchFinder::MatchCallback
 {
 public:
-   renameAndAddParamModifier(Replacements *Replace, const int n, const char * replacement, const char * insertion )
+   renameAndAddParamModifier(Replacements *Replace, const int n, const std::string & replacement, const std::string & insertion )
       : Replace(Replace),
         InsertAfterParam{n},
         ReplacementFunctionName{replacement},
@@ -96,14 +97,14 @@ public:
    // on the AST.
    virtual void run(const MatchFinder::MatchResult &Result) {
       const CallExpr *M = Result.Nodes.getStmtAs<CallExpr>("y");
-      M->dump() ;
+//      M->dump() ;
       const Expr * a = M->getArg( InsertAfterParam ) ;
 
       std::string replacement = decl2str( a, Result.SourceManager ) ; 
 
       if ( replacement.length() )
       {
-std::cerr << replacement << '\n' ;
+//std::cerr << replacement << '\n' ;
          replacement = replacement + InsertionText ;
 
          // rename the function:
@@ -129,12 +130,12 @@ private:
    // Replacements are the RefactoringTool's way to keep track of code
    // transformations, deduplicate them and apply them to the code when
    // the tool has finished with all translation units.
-   Replacements *Replace;
+   Replacements * Replace;
 
    int InsertAfterParam ;
 
-   const char * ReplacementFunctionName ;
-   const char * InsertionText ;
+   std::string ReplacementFunctionName ;
+   std::string InsertionText ;
 } ;
 
 
@@ -163,10 +164,33 @@ int main(int argc, const char **argv)
    RefactoringTool Tool(*Compilations, SourcePaths);
    ast_matchers::MatchFinder Finder;
 
-   renameAndAddParamModifier renamerCallBack(&Tool.getReplacements(), 0, "lz_mutex_lock_extended", ", 0" );
-   Finder.addMatcher(
-            callExpr( callee(functionDecl(hasName("lz_mutex_lock"))) ).bind("y"),
-      &renamerCallBack);
+   std::unordered_map<std::string, int> replaceBaseNames {
+      {"lz_mutex_lock", 0},       {"lz_mutex_unlock", 0},
+      {"lz_mutex_trylock", 0},    {"lz_mutex_destroy", 0},
+      {"lz_mutex_consistent", 0}, {"lz_cond_wait", 1},
+      {"lz_cond_timedwait", 2},   {"lz_cond_broadcast", 0},
+      {"lz_cond_destroy", 0},     {"lz_cond_init", 1},
+      {"lz_cond_signal", 0}
+   } ;
+
+   for ( const auto & p : replaceBaseNames )
+   {
+      const auto & s = p.first ;
+      const int n = p.second ;
+
+      std::string e = s + "_extended" ;
+
+      renameAndAddParamModifier renamerCallBack1(&Tool.getReplacements(), n, e, ", LZ_OP_ABORT_ON_ERROR" );
+      renameAndAddParamModifier renamerCallBack2(&Tool.getReplacements(), n, e, ", 0" );
+
+      Finder.addMatcher(
+               callExpr( callee(functionDecl(hasName( s + "_or_abort" ))) ).bind("y"),
+         &renamerCallBack1);
+
+      Finder.addMatcher(
+               callExpr( callee(functionDecl(hasName( s ))) ).bind("y"),
+         &renamerCallBack2);
+   }
 
    return Tool.runAndSave(newFrontendActionFactory(&Finder).get());
 }
