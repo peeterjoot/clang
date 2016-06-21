@@ -60,10 +60,10 @@ LDFLAGS += -lz
 
 #LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
-EXES += tool_classvisitor
-EXES += tool_globalvisitor
-EXES += tool_dumper
-EXES += tool_memberdumper
+EXES += $(LLVMPREFIX)/bin/tool_classvisitor
+EXES += $(LLVMPREFIX)/bin/tool_globalvisitor
+EXES += $(LLVMPREFIX)/bin/tool_dumper
+EXES += $(LLVMPREFIX)/bin/tool_memberdumper
 EXES += $(LLVMPREFIX)/bin/lzmutexRenamer
 
 CFLAGS += -std=c++11
@@ -80,16 +80,16 @@ LINK_COMMAND = $(CXX) $< -o $@ $(LDFLAGS)
 $(LLVMPREFIX)/bin/lzmutexRenamer : RenameMethod.o
 	$(LINK_COMMAND)
 
-tool_classvisitor: tool_classvisitor.o
+$(LLVMPREFIX)/bin/tool_classvisitor: tool_classvisitor.o
 	$(LINK_COMMAND)
 
-tool_dumper: tool_dumper.o
+$(LLVMPREFIX)/bin/tool_dumper: tool_dumper.o
 	$(LINK_COMMAND)
 
-tool_globalvisitor: tool_globalvisitor.o
+$(LLVMPREFIX)/bin/tool_globalvisitor: tool_globalvisitor.o
 	$(LINK_COMMAND)
 
-tool_memberdumper: tool_memberdumper.o
+$(LLVMPREFIX)/bin/tool_memberdumper: tool_memberdumper.o
 	$(LINK_COMMAND)
 
 #isystem.h : isystem.pl
