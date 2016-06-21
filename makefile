@@ -98,6 +98,6 @@ renamer.o : RenameMethod.cpp
 #	$< $(CXX) > $@
 
 clean:
-	rm -rf *.o *.ll $(EXES) $(CLEAN_EXES) isystem.h
+	rm -rf *.o *.d *.ll $(EXES) $(CLEAN_EXES) isystem.h
 
 -include $(wildcard *.d)

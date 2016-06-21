@@ -15,6 +15,7 @@
 #include <sstream>
 #include <string>
 #include <memory>
+#include <iostream>
 
 #include "clang/AST/AST.h"
 #include "clang/AST/ASTConsumer.h"

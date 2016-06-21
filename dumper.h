@@ -1,7 +1,7 @@
 // 
 // Generated from nm output of classvisitor, looking for ::Visit symbols.  Then in vim:
 //
-// :,$ s/bool \(.*\)/&Z{Z   cout << endl << "&" << endl ;ZZ   v->dump() ;ZZ   return true ;Z}ZZ/
+// :,$ s/bool \(.*\)/&Z{Z   std::cout << '\n' << "&" << '\n' ;ZZ   v->dump() ;ZZ   return true ;Z}ZZ/
 // :,$ !tr Z '\n'
 //
 // Since the XML AST dumper that apparently once existed has been deleted, this provides a poor man's version, also implicitly
@@ -10,7 +10,7 @@
 
 bool VisitAbstractConditionalOperator( AbstractConditionalOperator * v )
 {
-   cout << endl << "bool VisitAbstractConditionalOperator( AbstractConditionalOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitAbstractConditionalOperator( AbstractConditionalOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -20,7 +20,7 @@ bool VisitAbstractConditionalOperator( AbstractConditionalOperator * v )
 
 bool VisitAccessSpecDecl( AccessSpecDecl * v )
 {
-   cout << endl << "bool VisitAccessSpecDecl( AccessSpecDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitAccessSpecDecl( AccessSpecDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -30,7 +30,7 @@ bool VisitAccessSpecDecl( AccessSpecDecl * v )
 
 bool VisitAddrLabelExpr( AddrLabelExpr * v )
 {
-   cout << endl << "bool VisitAddrLabelExpr( AddrLabelExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitAddrLabelExpr( AddrLabelExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -40,7 +40,7 @@ bool VisitAddrLabelExpr( AddrLabelExpr * v )
 
 bool VisitArraySubscriptExpr( ArraySubscriptExpr * v )
 {
-   cout << endl << "bool VisitArraySubscriptExpr( ArraySubscriptExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitArraySubscriptExpr( ArraySubscriptExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -50,7 +50,7 @@ bool VisitArraySubscriptExpr( ArraySubscriptExpr * v )
 
 bool VisitArrayType( ArrayType * v )
 {
-   cout << endl << "bool VisitArrayType( ArrayType * v )" << endl ;
+   std::cout << '\n' << "bool VisitArrayType( ArrayType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -60,7 +60,7 @@ bool VisitArrayType( ArrayType * v )
 
 bool VisitArrayTypeTraitExpr( ArrayTypeTraitExpr * v )
 {
-   cout << endl << "bool VisitArrayTypeTraitExpr( ArrayTypeTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitArrayTypeTraitExpr( ArrayTypeTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -70,7 +70,7 @@ bool VisitArrayTypeTraitExpr( ArrayTypeTraitExpr * v )
 
 bool VisitAsmStmt( AsmStmt * v )
 {
-   cout << endl << "bool VisitAsmStmt( AsmStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitAsmStmt( AsmStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -80,7 +80,7 @@ bool VisitAsmStmt( AsmStmt * v )
 
 bool VisitAsTypeExpr( AsTypeExpr * v )
 {
-   cout << endl << "bool VisitAsTypeExpr( AsTypeExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitAsTypeExpr( AsTypeExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -90,7 +90,7 @@ bool VisitAsTypeExpr( AsTypeExpr * v )
 
 bool VisitAtomicExpr( AtomicExpr * v )
 {
-   cout << endl << "bool VisitAtomicExpr( AtomicExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitAtomicExpr( AtomicExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -100,7 +100,7 @@ bool VisitAtomicExpr( AtomicExpr * v )
 
 bool VisitAtomicType( AtomicType * v )
 {
-   cout << endl << "bool VisitAtomicType( AtomicType * v )" << endl ;
+   std::cout << '\n' << "bool VisitAtomicType( AtomicType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -110,7 +110,7 @@ bool VisitAtomicType( AtomicType * v )
 
 bool VisitAttributedStmt( AttributedStmt * v )
 {
-   cout << endl << "bool VisitAttributedStmt( AttributedStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitAttributedStmt( AttributedStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -120,7 +120,7 @@ bool VisitAttributedStmt( AttributedStmt * v )
 
 bool VisitAttributedType( AttributedType * v )
 {
-   cout << endl << "bool VisitAttributedType( AttributedType * v )" << endl ;
+   std::cout << '\n' << "bool VisitAttributedType( AttributedType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -130,7 +130,7 @@ bool VisitAttributedType( AttributedType * v )
 
 bool VisitAutoType( AutoType * v )
 {
-   cout << endl << "bool VisitAutoType( AutoType * v )" << endl ;
+   std::cout << '\n' << "bool VisitAutoType( AutoType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -140,7 +140,7 @@ bool VisitAutoType( AutoType * v )
 
 bool VisitBinAddAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinAddAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinAddAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -150,7 +150,7 @@ bool VisitBinAddAssign( CompoundAssignOperator * v )
 
 bool VisitBinAdd( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinAdd( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinAdd( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -160,7 +160,7 @@ bool VisitBinAdd( BinaryOperator * v )
 
 bool VisitBinAndAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinAndAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinAndAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -170,7 +170,7 @@ bool VisitBinAndAssign( CompoundAssignOperator * v )
 
 bool VisitBinAnd( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinAnd( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinAnd( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -180,7 +180,7 @@ bool VisitBinAnd( BinaryOperator * v )
 
 bool VisitBinaryConditionalOperator( BinaryConditionalOperator * v )
 {
-   cout << endl << "bool VisitBinaryConditionalOperator( BinaryConditionalOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinaryConditionalOperator( BinaryConditionalOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -190,7 +190,7 @@ bool VisitBinaryConditionalOperator( BinaryConditionalOperator * v )
 
 bool VisitBinaryOperator( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinaryOperator( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinaryOperator( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -200,7 +200,7 @@ bool VisitBinaryOperator( BinaryOperator * v )
 #if 0
 bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )
 {
-   cout << endl << "bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -210,7 +210,7 @@ bool VisitBinaryTypeTraitExpr( BinaryTypeTraitExpr * v )
 
 bool VisitBinAssign( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinAssign( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinAssign( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -220,7 +220,7 @@ bool VisitBinAssign( BinaryOperator * v )
 
 bool VisitBinComma( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinComma( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinComma( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -230,7 +230,7 @@ bool VisitBinComma( BinaryOperator * v )
 
 bool VisitBinDivAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinDivAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinDivAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -240,7 +240,7 @@ bool VisitBinDivAssign( CompoundAssignOperator * v )
 
 bool VisitBinDiv( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinDiv( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinDiv( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -250,7 +250,7 @@ bool VisitBinDiv( BinaryOperator * v )
 
 bool VisitBinEQ( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinEQ( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinEQ( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -260,7 +260,7 @@ bool VisitBinEQ( BinaryOperator * v )
 
 bool VisitBinGE( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinGE( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinGE( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -270,7 +270,7 @@ bool VisitBinGE( BinaryOperator * v )
 
 bool VisitBinGT( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinGT( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinGT( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -280,7 +280,7 @@ bool VisitBinGT( BinaryOperator * v )
 
 bool VisitBinLAnd( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinLAnd( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinLAnd( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -290,7 +290,7 @@ bool VisitBinLAnd( BinaryOperator * v )
 
 bool VisitBinLE( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinLE( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinLE( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -300,7 +300,7 @@ bool VisitBinLE( BinaryOperator * v )
 
 bool VisitBinLOr( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinLOr( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinLOr( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -310,7 +310,7 @@ bool VisitBinLOr( BinaryOperator * v )
 
 bool VisitBinLT( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinLT( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinLT( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -320,7 +320,7 @@ bool VisitBinLT( BinaryOperator * v )
 
 bool VisitBinMulAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinMulAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinMulAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -330,7 +330,7 @@ bool VisitBinMulAssign( CompoundAssignOperator * v )
 
 bool VisitBinMul( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinMul( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinMul( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -340,7 +340,7 @@ bool VisitBinMul( BinaryOperator * v )
 
 bool VisitBinNE( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinNE( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinNE( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -350,7 +350,7 @@ bool VisitBinNE( BinaryOperator * v )
 
 bool VisitBinOrAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinOrAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinOrAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -360,7 +360,7 @@ bool VisitBinOrAssign( CompoundAssignOperator * v )
 
 bool VisitBinOr( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinOr( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinOr( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -370,7 +370,7 @@ bool VisitBinOr( BinaryOperator * v )
 
 bool VisitBinPtrMemD( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinPtrMemD( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinPtrMemD( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -380,7 +380,7 @@ bool VisitBinPtrMemD( BinaryOperator * v )
 
 bool VisitBinPtrMemI( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinPtrMemI( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinPtrMemI( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -390,7 +390,7 @@ bool VisitBinPtrMemI( BinaryOperator * v )
 
 bool VisitBinRemAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinRemAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinRemAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -400,7 +400,7 @@ bool VisitBinRemAssign( CompoundAssignOperator * v )
 
 bool VisitBinRem( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinRem( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinRem( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -410,7 +410,7 @@ bool VisitBinRem( BinaryOperator * v )
 
 bool VisitBinShlAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinShlAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinShlAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -420,7 +420,7 @@ bool VisitBinShlAssign( CompoundAssignOperator * v )
 
 bool VisitBinShl( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinShl( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinShl( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -430,7 +430,7 @@ bool VisitBinShl( BinaryOperator * v )
 
 bool VisitBinShrAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinShrAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinShrAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -440,7 +440,7 @@ bool VisitBinShrAssign( CompoundAssignOperator * v )
 
 bool VisitBinShr( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinShr( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinShr( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -450,7 +450,7 @@ bool VisitBinShr( BinaryOperator * v )
 
 bool VisitBinSubAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinSubAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinSubAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -460,7 +460,7 @@ bool VisitBinSubAssign( CompoundAssignOperator * v )
 
 bool VisitBinSub( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinSub( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinSub( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -470,7 +470,7 @@ bool VisitBinSub( BinaryOperator * v )
 
 bool VisitBinXorAssign( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitBinXorAssign( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinXorAssign( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -480,7 +480,7 @@ bool VisitBinXorAssign( CompoundAssignOperator * v )
 
 bool VisitBinXor( BinaryOperator * v )
 {
-   cout << endl << "bool VisitBinXor( BinaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitBinXor( BinaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -490,7 +490,7 @@ bool VisitBinXor( BinaryOperator * v )
 
 bool VisitBlockDecl( BlockDecl * v )
 {
-   cout << endl << "bool VisitBlockDecl( BlockDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitBlockDecl( BlockDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -500,7 +500,7 @@ bool VisitBlockDecl( BlockDecl * v )
 
 bool VisitBlockExpr( BlockExpr * v )
 {
-   cout << endl << "bool VisitBlockExpr( BlockExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitBlockExpr( BlockExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -510,7 +510,7 @@ bool VisitBlockExpr( BlockExpr * v )
 
 bool VisitBlockPointerType( BlockPointerType * v )
 {
-   cout << endl << "bool VisitBlockPointerType( BlockPointerType * v )" << endl ;
+   std::cout << '\n' << "bool VisitBlockPointerType( BlockPointerType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -520,7 +520,7 @@ bool VisitBlockPointerType( BlockPointerType * v )
 
 bool VisitBreakStmt( BreakStmt * v )
 {
-   cout << endl << "bool VisitBreakStmt( BreakStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitBreakStmt( BreakStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -530,7 +530,7 @@ bool VisitBreakStmt( BreakStmt * v )
 
 bool VisitBuiltinType( BuiltinType * v )
 {
-   cout << endl << "bool VisitBuiltinType( BuiltinType * v )" << endl ;
+   std::cout << '\n' << "bool VisitBuiltinType( BuiltinType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -540,7 +540,7 @@ bool VisitBuiltinType( BuiltinType * v )
 
 bool VisitCallExpr( CallExpr * v )
 {
-   cout << endl << "bool VisitCallExpr( CallExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCallExpr( CallExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -550,7 +550,7 @@ bool VisitCallExpr( CallExpr * v )
 
 bool VisitCaseStmt( CaseStmt * v )
 {
-   cout << endl << "bool VisitCaseStmt( CaseStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitCaseStmt( CaseStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -560,7 +560,7 @@ bool VisitCaseStmt( CaseStmt * v )
 
 bool VisitCastExpr( CastExpr * v )
 {
-   cout << endl << "bool VisitCastExpr( CastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCastExpr( CastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -570,7 +570,7 @@ bool VisitCastExpr( CastExpr * v )
 
 bool VisitCharacterLiteral( CharacterLiteral * v )
 {
-   cout << endl << "bool VisitCharacterLiteral( CharacterLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitCharacterLiteral( CharacterLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -580,7 +580,7 @@ bool VisitCharacterLiteral( CharacterLiteral * v )
 
 bool VisitChooseExpr( ChooseExpr * v )
 {
-   cout << endl << "bool VisitChooseExpr( ChooseExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitChooseExpr( ChooseExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -590,7 +590,7 @@ bool VisitChooseExpr( ChooseExpr * v )
 
 bool VisitClassScopeFunctionSpecializationDecl( ClassScopeFunctionSpecializationDecl * v )
 {
-   cout << endl << "bool VisitClassScopeFunctionSpecializationDecl( ClassScopeFunctionSpecializationDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitClassScopeFunctionSpecializationDecl( ClassScopeFunctionSpecializationDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -600,7 +600,7 @@ bool VisitClassScopeFunctionSpecializationDecl( ClassScopeFunctionSpecialization
 
 bool VisitClassTemplateDecl( ClassTemplateDecl * v )
 {
-   cout << endl << "bool VisitClassTemplateDecl( ClassTemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitClassTemplateDecl( ClassTemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -610,7 +610,7 @@ bool VisitClassTemplateDecl( ClassTemplateDecl * v )
 
 bool VisitClassTemplatePartialSpecializationDecl( ClassTemplatePartialSpecializationDecl * v )
 {
-   cout << endl << "bool VisitClassTemplatePartialSpecializationDecl( ClassTemplatePartialSpecializationDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitClassTemplatePartialSpecializationDecl( ClassTemplatePartialSpecializationDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -620,7 +620,7 @@ bool VisitClassTemplatePartialSpecializationDecl( ClassTemplatePartialSpecializa
 
 bool VisitClassTemplateSpecializationDecl( ClassTemplateSpecializationDecl * v )
 {
-   cout << endl << "bool VisitClassTemplateSpecializationDecl( ClassTemplateSpecializationDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitClassTemplateSpecializationDecl( ClassTemplateSpecializationDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -630,7 +630,7 @@ bool VisitClassTemplateSpecializationDecl( ClassTemplateSpecializationDecl * v )
 
 bool VisitComplexType( ComplexType * v )
 {
-   cout << endl << "bool VisitComplexType( ComplexType * v )" << endl ;
+   std::cout << '\n' << "bool VisitComplexType( ComplexType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -640,7 +640,7 @@ bool VisitComplexType( ComplexType * v )
 
 bool VisitCompoundAssignOperator( CompoundAssignOperator * v )
 {
-   cout << endl << "bool VisitCompoundAssignOperator( CompoundAssignOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitCompoundAssignOperator( CompoundAssignOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -650,7 +650,7 @@ bool VisitCompoundAssignOperator( CompoundAssignOperator * v )
 
 bool VisitCompoundLiteralExpr( CompoundLiteralExpr * v )
 {
-   cout << endl << "bool VisitCompoundLiteralExpr( CompoundLiteralExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCompoundLiteralExpr( CompoundLiteralExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -660,7 +660,7 @@ bool VisitCompoundLiteralExpr( CompoundLiteralExpr * v )
 
 bool VisitCompoundStmt( CompoundStmt * v )
 {
-   cout << endl << "bool VisitCompoundStmt( CompoundStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitCompoundStmt( CompoundStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -670,7 +670,7 @@ bool VisitCompoundStmt( CompoundStmt * v )
 
 bool VisitConditionalOperator( ConditionalOperator * v )
 {
-   cout << endl << "bool VisitConditionalOperator( ConditionalOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitConditionalOperator( ConditionalOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -680,7 +680,7 @@ bool VisitConditionalOperator( ConditionalOperator * v )
 
 bool VisitConstantArrayType( ConstantArrayType * v )
 {
-   cout << endl << "bool VisitConstantArrayType( ConstantArrayType * v )" << endl ;
+   std::cout << '\n' << "bool VisitConstantArrayType( ConstantArrayType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -690,7 +690,7 @@ bool VisitConstantArrayType( ConstantArrayType * v )
 
 bool VisitContinueStmt( ContinueStmt * v )
 {
-   cout << endl << "bool VisitContinueStmt( ContinueStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitContinueStmt( ContinueStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -700,7 +700,7 @@ bool VisitContinueStmt( ContinueStmt * v )
 
 bool VisitCStyleCastExpr( CStyleCastExpr * v )
 {
-   cout << endl << "bool VisitCStyleCastExpr( CStyleCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCStyleCastExpr( CStyleCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -710,7 +710,7 @@ bool VisitCStyleCastExpr( CStyleCastExpr * v )
 
 bool VisitCUDAKernelCallExpr( CUDAKernelCallExpr * v )
 {
-   cout << endl << "bool VisitCUDAKernelCallExpr( CUDAKernelCallExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCUDAKernelCallExpr( CUDAKernelCallExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -720,7 +720,7 @@ bool VisitCUDAKernelCallExpr( CUDAKernelCallExpr * v )
 
 bool VisitCXXBindTemporaryExpr( CXXBindTemporaryExpr * v )
 {
-   cout << endl << "bool VisitCXXBindTemporaryExpr( CXXBindTemporaryExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXBindTemporaryExpr( CXXBindTemporaryExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -730,7 +730,7 @@ bool VisitCXXBindTemporaryExpr( CXXBindTemporaryExpr * v )
 
 bool VisitCXXBoolLiteralExpr( CXXBoolLiteralExpr * v )
 {
-   cout << endl << "bool VisitCXXBoolLiteralExpr( CXXBoolLiteralExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXBoolLiteralExpr( CXXBoolLiteralExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -740,7 +740,7 @@ bool VisitCXXBoolLiteralExpr( CXXBoolLiteralExpr * v )
 
 bool VisitCXXCatchStmt( CXXCatchStmt * v )
 {
-   cout << endl << "bool VisitCXXCatchStmt( CXXCatchStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXCatchStmt( CXXCatchStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -750,7 +750,7 @@ bool VisitCXXCatchStmt( CXXCatchStmt * v )
 
 bool VisitCXXConstCastExpr( CXXConstCastExpr * v )
 {
-   cout << endl << "bool VisitCXXConstCastExpr( CXXConstCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXConstCastExpr( CXXConstCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -760,7 +760,7 @@ bool VisitCXXConstCastExpr( CXXConstCastExpr * v )
 
 bool VisitCXXConstructExpr( CXXConstructExpr * v )
 {
-   cout << endl << "bool VisitCXXConstructExpr( CXXConstructExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXConstructExpr( CXXConstructExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -770,7 +770,7 @@ bool VisitCXXConstructExpr( CXXConstructExpr * v )
 
 bool VisitCXXConstructorDecl( CXXConstructorDecl * v )
 {
-   cout << endl << "bool VisitCXXConstructorDecl( CXXConstructorDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXConstructorDecl( CXXConstructorDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -780,7 +780,7 @@ bool VisitCXXConstructorDecl( CXXConstructorDecl * v )
 
 bool VisitCXXConversionDecl( CXXConversionDecl * v )
 {
-   cout << endl << "bool VisitCXXConversionDecl( CXXConversionDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXConversionDecl( CXXConversionDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -790,7 +790,7 @@ bool VisitCXXConversionDecl( CXXConversionDecl * v )
 
 bool VisitCXXDefaultArgExpr( CXXDefaultArgExpr * v )
 {
-   cout << endl << "bool VisitCXXDefaultArgExpr( CXXDefaultArgExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXDefaultArgExpr( CXXDefaultArgExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -800,7 +800,7 @@ bool VisitCXXDefaultArgExpr( CXXDefaultArgExpr * v )
 
 bool VisitCXXDeleteExpr( CXXDeleteExpr * v )
 {
-   cout << endl << "bool VisitCXXDeleteExpr( CXXDeleteExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXDeleteExpr( CXXDeleteExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -810,7 +810,7 @@ bool VisitCXXDeleteExpr( CXXDeleteExpr * v )
 
 bool VisitCXXDependentScopeMemberExpr( CXXDependentScopeMemberExpr * v )
 {
-   cout << endl << "bool VisitCXXDependentScopeMemberExpr( CXXDependentScopeMemberExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXDependentScopeMemberExpr( CXXDependentScopeMemberExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -820,7 +820,7 @@ bool VisitCXXDependentScopeMemberExpr( CXXDependentScopeMemberExpr * v )
 
 bool VisitCXXDestructorDecl( CXXDestructorDecl * v )
 {
-   cout << endl << "bool VisitCXXDestructorDecl( CXXDestructorDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXDestructorDecl( CXXDestructorDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -830,7 +830,7 @@ bool VisitCXXDestructorDecl( CXXDestructorDecl * v )
 
 bool VisitCXXDynamicCastExpr( CXXDynamicCastExpr * v )
 {
-   cout << endl << "bool VisitCXXDynamicCastExpr( CXXDynamicCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXDynamicCastExpr( CXXDynamicCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -840,7 +840,7 @@ bool VisitCXXDynamicCastExpr( CXXDynamicCastExpr * v )
 
 bool VisitCXXForRangeStmt( CXXForRangeStmt * v )
 {
-   cout << endl << "bool VisitCXXForRangeStmt( CXXForRangeStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXForRangeStmt( CXXForRangeStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -850,7 +850,7 @@ bool VisitCXXForRangeStmt( CXXForRangeStmt * v )
 
 bool VisitCXXFunctionalCastExpr( CXXFunctionalCastExpr * v )
 {
-   cout << endl << "bool VisitCXXFunctionalCastExpr( CXXFunctionalCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXFunctionalCastExpr( CXXFunctionalCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -860,7 +860,7 @@ bool VisitCXXFunctionalCastExpr( CXXFunctionalCastExpr * v )
 
 bool VisitCXXMemberCallExpr( CXXMemberCallExpr * v )
 {
-   cout << endl << "bool VisitCXXMemberCallExpr( CXXMemberCallExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXMemberCallExpr( CXXMemberCallExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -870,7 +870,7 @@ bool VisitCXXMemberCallExpr( CXXMemberCallExpr * v )
 
 bool VisitCXXMethodDecl( CXXMethodDecl * v )
 {
-   cout << endl << "bool VisitCXXMethodDecl( CXXMethodDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXMethodDecl( CXXMethodDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -880,7 +880,7 @@ bool VisitCXXMethodDecl( CXXMethodDecl * v )
 
 bool VisitCXXNamedCastExpr( CXXNamedCastExpr * v )
 {
-   cout << endl << "bool VisitCXXNamedCastExpr( CXXNamedCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXNamedCastExpr( CXXNamedCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -890,7 +890,7 @@ bool VisitCXXNamedCastExpr( CXXNamedCastExpr * v )
 
 bool VisitCXXNewExpr( CXXNewExpr * v )
 {
-   cout << endl << "bool VisitCXXNewExpr( CXXNewExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXNewExpr( CXXNewExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -900,7 +900,7 @@ bool VisitCXXNewExpr( CXXNewExpr * v )
 
 bool VisitCXXNoexceptExpr( CXXNoexceptExpr * v )
 {
-   cout << endl << "bool VisitCXXNoexceptExpr( CXXNoexceptExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXNoexceptExpr( CXXNoexceptExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -910,7 +910,7 @@ bool VisitCXXNoexceptExpr( CXXNoexceptExpr * v )
 
 bool VisitCXXNullPtrLiteralExpr( CXXNullPtrLiteralExpr * v )
 {
-   cout << endl << "bool VisitCXXNullPtrLiteralExpr( CXXNullPtrLiteralExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXNullPtrLiteralExpr( CXXNullPtrLiteralExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -920,7 +920,7 @@ bool VisitCXXNullPtrLiteralExpr( CXXNullPtrLiteralExpr * v )
 
 bool VisitCXXOperatorCallExpr( CXXOperatorCallExpr * v )
 {
-   cout << endl << "bool VisitCXXOperatorCallExpr( CXXOperatorCallExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXOperatorCallExpr( CXXOperatorCallExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -930,7 +930,7 @@ bool VisitCXXOperatorCallExpr( CXXOperatorCallExpr * v )
 
 bool VisitCXXPseudoDestructorExpr( CXXPseudoDestructorExpr * v )
 {
-   cout << endl << "bool VisitCXXPseudoDestructorExpr( CXXPseudoDestructorExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXPseudoDestructorExpr( CXXPseudoDestructorExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -940,7 +940,7 @@ bool VisitCXXPseudoDestructorExpr( CXXPseudoDestructorExpr * v )
 
 bool VisitCXXReinterpretCastExpr( CXXReinterpretCastExpr * v )
 {
-   cout << endl << "bool VisitCXXReinterpretCastExpr( CXXReinterpretCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXReinterpretCastExpr( CXXReinterpretCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -950,7 +950,7 @@ bool VisitCXXReinterpretCastExpr( CXXReinterpretCastExpr * v )
 
 bool VisitCXXScalarValueInitExpr( CXXScalarValueInitExpr * v )
 {
-   cout << endl << "bool VisitCXXScalarValueInitExpr( CXXScalarValueInitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXScalarValueInitExpr( CXXScalarValueInitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -960,7 +960,7 @@ bool VisitCXXScalarValueInitExpr( CXXScalarValueInitExpr * v )
 
 bool VisitCXXStaticCastExpr( CXXStaticCastExpr * v )
 {
-   cout << endl << "bool VisitCXXStaticCastExpr( CXXStaticCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXStaticCastExpr( CXXStaticCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -970,7 +970,7 @@ bool VisitCXXStaticCastExpr( CXXStaticCastExpr * v )
 
 bool VisitCXXTemporaryObjectExpr( CXXTemporaryObjectExpr * v )
 {
-   cout << endl << "bool VisitCXXTemporaryObjectExpr( CXXTemporaryObjectExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXTemporaryObjectExpr( CXXTemporaryObjectExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -980,7 +980,7 @@ bool VisitCXXTemporaryObjectExpr( CXXTemporaryObjectExpr * v )
 
 bool VisitCXXThisExpr( CXXThisExpr * v )
 {
-   cout << endl << "bool VisitCXXThisExpr( CXXThisExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXThisExpr( CXXThisExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -990,7 +990,7 @@ bool VisitCXXThisExpr( CXXThisExpr * v )
 
 bool VisitCXXThrowExpr( CXXThrowExpr * v )
 {
-   cout << endl << "bool VisitCXXThrowExpr( CXXThrowExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXThrowExpr( CXXThrowExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1000,7 +1000,7 @@ bool VisitCXXThrowExpr( CXXThrowExpr * v )
 
 bool VisitCXXTryStmt( CXXTryStmt * v )
 {
-   cout << endl << "bool VisitCXXTryStmt( CXXTryStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXTryStmt( CXXTryStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1010,7 +1010,7 @@ bool VisitCXXTryStmt( CXXTryStmt * v )
 
 bool VisitCXXTypeidExpr( CXXTypeidExpr * v )
 {
-   cout << endl << "bool VisitCXXTypeidExpr( CXXTypeidExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXTypeidExpr( CXXTypeidExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1020,7 +1020,7 @@ bool VisitCXXTypeidExpr( CXXTypeidExpr * v )
 
 bool VisitCXXUnresolvedConstructExpr( CXXUnresolvedConstructExpr * v )
 {
-   cout << endl << "bool VisitCXXUnresolvedConstructExpr( CXXUnresolvedConstructExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXUnresolvedConstructExpr( CXXUnresolvedConstructExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1030,7 +1030,7 @@ bool VisitCXXUnresolvedConstructExpr( CXXUnresolvedConstructExpr * v )
 
 bool VisitCXXUuidofExpr( CXXUuidofExpr * v )
 {
-   cout << endl << "bool VisitCXXUuidofExpr( CXXUuidofExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitCXXUuidofExpr( CXXUuidofExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1040,7 +1040,7 @@ bool VisitCXXUuidofExpr( CXXUuidofExpr * v )
 
 bool VisitDeclaratorDecl( DeclaratorDecl * v )
 {
-   cout << endl << "bool VisitDeclaratorDecl( DeclaratorDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitDeclaratorDecl( DeclaratorDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1050,7 +1050,7 @@ bool VisitDeclaratorDecl( DeclaratorDecl * v )
 
 bool VisitDecl( Decl * v )
 {
-   cout << endl << "bool VisitDecl( Decl * v )" << endl ;
+   std::cout << '\n' << "bool VisitDecl( Decl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1060,7 +1060,7 @@ bool VisitDecl( Decl * v )
 
 bool VisitDeclRefExpr( DeclRefExpr * v )
 {
-   cout << endl << "bool VisitDeclRefExpr( DeclRefExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitDeclRefExpr( DeclRefExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1070,7 +1070,7 @@ bool VisitDeclRefExpr( DeclRefExpr * v )
 
 bool VisitDeclStmt( DeclStmt * v )
 {
-   cout << endl << "bool VisitDeclStmt( DeclStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitDeclStmt( DeclStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1080,7 +1080,7 @@ bool VisitDeclStmt( DeclStmt * v )
 
 bool VisitDecltypeType( DecltypeType * v )
 {
-   cout << endl << "bool VisitDecltypeType( DecltypeType * v )" << endl ;
+   std::cout << '\n' << "bool VisitDecltypeType( DecltypeType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1090,7 +1090,7 @@ bool VisitDecltypeType( DecltypeType * v )
 
 bool VisitDefaultStmt( DefaultStmt * v )
 {
-   cout << endl << "bool VisitDefaultStmt( DefaultStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitDefaultStmt( DefaultStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1100,7 +1100,7 @@ bool VisitDefaultStmt( DefaultStmt * v )
 
 bool VisitDependentNameType( DependentNameType * v )
 {
-   cout << endl << "bool VisitDependentNameType( DependentNameType * v )" << endl ;
+   std::cout << '\n' << "bool VisitDependentNameType( DependentNameType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1110,7 +1110,7 @@ bool VisitDependentNameType( DependentNameType * v )
 
 bool VisitDependentScopeDeclRefExpr( DependentScopeDeclRefExpr * v )
 {
-   cout << endl << "bool VisitDependentScopeDeclRefExpr( DependentScopeDeclRefExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitDependentScopeDeclRefExpr( DependentScopeDeclRefExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1120,7 +1120,7 @@ bool VisitDependentScopeDeclRefExpr( DependentScopeDeclRefExpr * v )
 
 bool VisitDependentSizedArrayType( DependentSizedArrayType * v )
 {
-   cout << endl << "bool VisitDependentSizedArrayType( DependentSizedArrayType * v )" << endl ;
+   std::cout << '\n' << "bool VisitDependentSizedArrayType( DependentSizedArrayType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1130,7 +1130,7 @@ bool VisitDependentSizedArrayType( DependentSizedArrayType * v )
 
 bool VisitDependentSizedExtVectorType( DependentSizedExtVectorType * v )
 {
-   cout << endl << "bool VisitDependentSizedExtVectorType( DependentSizedExtVectorType * v )" << endl ;
+   std::cout << '\n' << "bool VisitDependentSizedExtVectorType( DependentSizedExtVectorType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1140,7 +1140,7 @@ bool VisitDependentSizedExtVectorType( DependentSizedExtVectorType * v )
 
 bool VisitDependentTemplateSpecializationType( DependentTemplateSpecializationType * v )
 {
-   cout << endl << "bool VisitDependentTemplateSpecializationType( DependentTemplateSpecializationType * v )" << endl ;
+   std::cout << '\n' << "bool VisitDependentTemplateSpecializationType( DependentTemplateSpecializationType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1150,7 +1150,7 @@ bool VisitDependentTemplateSpecializationType( DependentTemplateSpecializationTy
 
 bool VisitDesignatedInitExpr( DesignatedInitExpr * v )
 {
-   cout << endl << "bool VisitDesignatedInitExpr( DesignatedInitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitDesignatedInitExpr( DesignatedInitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1160,7 +1160,7 @@ bool VisitDesignatedInitExpr( DesignatedInitExpr * v )
 
 bool VisitDoStmt( DoStmt * v )
 {
-   cout << endl << "bool VisitDoStmt( DoStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitDoStmt( DoStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1170,7 +1170,7 @@ bool VisitDoStmt( DoStmt * v )
 
 bool VisitElaboratedType( ElaboratedType * v )
 {
-   cout << endl << "bool VisitElaboratedType( ElaboratedType * v )" << endl ;
+   std::cout << '\n' << "bool VisitElaboratedType( ElaboratedType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1180,7 +1180,7 @@ bool VisitElaboratedType( ElaboratedType * v )
 
 bool VisitEnumConstantDecl( EnumConstantDecl * v )
 {
-   cout << endl << "bool VisitEnumConstantDecl( EnumConstantDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitEnumConstantDecl( EnumConstantDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1190,7 +1190,7 @@ bool VisitEnumConstantDecl( EnumConstantDecl * v )
 
 bool VisitEnumDecl( EnumDecl * v )
 {
-   cout << endl << "bool VisitEnumDecl( EnumDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitEnumDecl( EnumDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1200,7 +1200,7 @@ bool VisitEnumDecl( EnumDecl * v )
 
 bool VisitEnumType( EnumType * v )
 {
-   cout << endl << "bool VisitEnumType( EnumType * v )" << endl ;
+   std::cout << '\n' << "bool VisitEnumType( EnumType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1210,7 +1210,7 @@ bool VisitEnumType( EnumType * v )
 
 bool VisitExplicitCastExpr( ExplicitCastExpr * v )
 {
-   cout << endl << "bool VisitExplicitCastExpr( ExplicitCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitExplicitCastExpr( ExplicitCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1220,7 +1220,7 @@ bool VisitExplicitCastExpr( ExplicitCastExpr * v )
 
 bool VisitExpressionTraitExpr( ExpressionTraitExpr * v )
 {
-   cout << endl << "bool VisitExpressionTraitExpr( ExpressionTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitExpressionTraitExpr( ExpressionTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1230,7 +1230,7 @@ bool VisitExpressionTraitExpr( ExpressionTraitExpr * v )
 
 bool VisitExpr( Expr * v )
 {
-   cout << endl << "bool VisitExpr( Expr * v )" << endl ;
+   std::cout << '\n' << "bool VisitExpr( Expr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1240,7 +1240,7 @@ bool VisitExpr( Expr * v )
 
 bool VisitExprWithCleanups( ExprWithCleanups * v )
 {
-   cout << endl << "bool VisitExprWithCleanups( ExprWithCleanups * v )" << endl ;
+   std::cout << '\n' << "bool VisitExprWithCleanups( ExprWithCleanups * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1250,7 +1250,7 @@ bool VisitExprWithCleanups( ExprWithCleanups * v )
 
 bool VisitExtVectorElementExpr( ExtVectorElementExpr * v )
 {
-   cout << endl << "bool VisitExtVectorElementExpr( ExtVectorElementExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitExtVectorElementExpr( ExtVectorElementExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1260,7 +1260,7 @@ bool VisitExtVectorElementExpr( ExtVectorElementExpr * v )
 
 bool VisitExtVectorType( ExtVectorType * v )
 {
-   cout << endl << "bool VisitExtVectorType( ExtVectorType * v )" << endl ;
+   std::cout << '\n' << "bool VisitExtVectorType( ExtVectorType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1270,7 +1270,7 @@ bool VisitExtVectorType( ExtVectorType * v )
 
 bool VisitFileScopeAsmDecl( FileScopeAsmDecl * v )
 {
-   cout << endl << "bool VisitFileScopeAsmDecl( FileScopeAsmDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitFileScopeAsmDecl( FileScopeAsmDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1280,7 +1280,7 @@ bool VisitFileScopeAsmDecl( FileScopeAsmDecl * v )
 
 bool VisitFloatingLiteral( FloatingLiteral * v )
 {
-   cout << endl << "bool VisitFloatingLiteral( FloatingLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitFloatingLiteral( FloatingLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1290,7 +1290,7 @@ bool VisitFloatingLiteral( FloatingLiteral * v )
 
 bool VisitForStmt( ForStmt * v )
 {
-   cout << endl << "bool VisitForStmt( ForStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitForStmt( ForStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1300,7 +1300,7 @@ bool VisitForStmt( ForStmt * v )
 
 bool VisitFriendDecl( FriendDecl * v )
 {
-   cout << endl << "bool VisitFriendDecl( FriendDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitFriendDecl( FriendDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1310,7 +1310,7 @@ bool VisitFriendDecl( FriendDecl * v )
 
 bool VisitFriendTemplateDecl( FriendTemplateDecl * v )
 {
-   cout << endl << "bool VisitFriendTemplateDecl( FriendTemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitFriendTemplateDecl( FriendTemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1320,7 +1320,7 @@ bool VisitFriendTemplateDecl( FriendTemplateDecl * v )
 
 bool VisitFunctionDecl( FunctionDecl * v )
 {
-   cout << endl << "bool VisitFunctionDecl( FunctionDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionDecl( FunctionDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1330,7 +1330,7 @@ bool VisitFunctionDecl( FunctionDecl * v )
 
 bool VisitFunctionNoProtoType( FunctionNoProtoType * v )
 {
-   cout << endl << "bool VisitFunctionNoProtoType( FunctionNoProtoType * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionNoProtoType( FunctionNoProtoType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1340,7 +1340,7 @@ bool VisitFunctionNoProtoType( FunctionNoProtoType * v )
 
 bool VisitFunctionParmPackExpr( FunctionParmPackExpr * v )
 {
-   cout << endl << "bool VisitFunctionParmPackExpr( FunctionParmPackExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionParmPackExpr( FunctionParmPackExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1350,7 +1350,7 @@ bool VisitFunctionParmPackExpr( FunctionParmPackExpr * v )
 
 bool VisitFunctionProtoType( FunctionProtoType * v )
 {
-   cout << endl << "bool VisitFunctionProtoType( FunctionProtoType * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionProtoType( FunctionProtoType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1360,7 +1360,7 @@ bool VisitFunctionProtoType( FunctionProtoType * v )
 
 bool VisitFunctionTemplateDecl( FunctionTemplateDecl * v )
 {
-   cout << endl << "bool VisitFunctionTemplateDecl( FunctionTemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionTemplateDecl( FunctionTemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1370,7 +1370,7 @@ bool VisitFunctionTemplateDecl( FunctionTemplateDecl * v )
 
 bool VisitFunctionType( FunctionType * v )
 {
-   cout << endl << "bool VisitFunctionType( FunctionType * v )" << endl ;
+   std::cout << '\n' << "bool VisitFunctionType( FunctionType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1380,7 +1380,7 @@ bool VisitFunctionType( FunctionType * v )
 
 bool VisitGCCAsmStmt( GCCAsmStmt * v )
 {
-   cout << endl << "bool VisitGCCAsmStmt( GCCAsmStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitGCCAsmStmt( GCCAsmStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1390,7 +1390,7 @@ bool VisitGCCAsmStmt( GCCAsmStmt * v )
 
 bool VisitGenericSelectionExpr( GenericSelectionExpr * v )
 {
-   cout << endl << "bool VisitGenericSelectionExpr( GenericSelectionExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitGenericSelectionExpr( GenericSelectionExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1400,7 +1400,7 @@ bool VisitGenericSelectionExpr( GenericSelectionExpr * v )
 
 bool VisitGNUNullExpr( GNUNullExpr * v )
 {
-   cout << endl << "bool VisitGNUNullExpr( GNUNullExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitGNUNullExpr( GNUNullExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1410,7 +1410,7 @@ bool VisitGNUNullExpr( GNUNullExpr * v )
 
 bool VisitGotoStmt( GotoStmt * v )
 {
-   cout << endl << "bool VisitGotoStmt( GotoStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitGotoStmt( GotoStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1420,7 +1420,7 @@ bool VisitGotoStmt( GotoStmt * v )
 
 bool VisitIfStmt( IfStmt * v )
 {
-   cout << endl << "bool VisitIfStmt( IfStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitIfStmt( IfStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1430,7 +1430,7 @@ bool VisitIfStmt( IfStmt * v )
 
 bool VisitImaginaryLiteral( ImaginaryLiteral * v )
 {
-   cout << endl << "bool VisitImaginaryLiteral( ImaginaryLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitImaginaryLiteral( ImaginaryLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1440,7 +1440,7 @@ bool VisitImaginaryLiteral( ImaginaryLiteral * v )
 
 bool VisitImplicitCastExpr( ImplicitCastExpr * v )
 {
-   cout << endl << "bool VisitImplicitCastExpr( ImplicitCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitImplicitCastExpr( ImplicitCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1450,7 +1450,7 @@ bool VisitImplicitCastExpr( ImplicitCastExpr * v )
 
 bool VisitImplicitParamDecl( ImplicitParamDecl * v )
 {
-   cout << endl << "bool VisitImplicitParamDecl( ImplicitParamDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitImplicitParamDecl( ImplicitParamDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1460,7 +1460,7 @@ bool VisitImplicitParamDecl( ImplicitParamDecl * v )
 
 bool VisitImplicitValueInitExpr( ImplicitValueInitExpr * v )
 {
-   cout << endl << "bool VisitImplicitValueInitExpr( ImplicitValueInitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitImplicitValueInitExpr( ImplicitValueInitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1470,7 +1470,7 @@ bool VisitImplicitValueInitExpr( ImplicitValueInitExpr * v )
 
 bool VisitImportDecl( ImportDecl * v )
 {
-   cout << endl << "bool VisitImportDecl( ImportDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitImportDecl( ImportDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1480,7 +1480,7 @@ bool VisitImportDecl( ImportDecl * v )
 
 bool VisitIncompleteArrayType( IncompleteArrayType * v )
 {
-   cout << endl << "bool VisitIncompleteArrayType( IncompleteArrayType * v )" << endl ;
+   std::cout << '\n' << "bool VisitIncompleteArrayType( IncompleteArrayType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1490,7 +1490,7 @@ bool VisitIncompleteArrayType( IncompleteArrayType * v )
 
 bool VisitIndirectFieldDecl( IndirectFieldDecl * v )
 {
-   cout << endl << "bool VisitIndirectFieldDecl( IndirectFieldDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitIndirectFieldDecl( IndirectFieldDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1500,7 +1500,7 @@ bool VisitIndirectFieldDecl( IndirectFieldDecl * v )
 
 bool VisitIndirectGotoStmt( IndirectGotoStmt * v )
 {
-   cout << endl << "bool VisitIndirectGotoStmt( IndirectGotoStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitIndirectGotoStmt( IndirectGotoStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1510,7 +1510,7 @@ bool VisitIndirectGotoStmt( IndirectGotoStmt * v )
 
 bool VisitInitListExpr( InitListExpr * v )
 {
-   cout << endl << "bool VisitInitListExpr( InitListExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitInitListExpr( InitListExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1520,7 +1520,7 @@ bool VisitInitListExpr( InitListExpr * v )
 
 bool VisitInjectedClassNameType( InjectedClassNameType * v )
 {
-   cout << endl << "bool VisitInjectedClassNameType( InjectedClassNameType * v )" << endl ;
+   std::cout << '\n' << "bool VisitInjectedClassNameType( InjectedClassNameType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1530,7 +1530,7 @@ bool VisitInjectedClassNameType( InjectedClassNameType * v )
 
 bool VisitIntegerLiteral( IntegerLiteral * v )
 {
-   cout << endl << "bool VisitIntegerLiteral( IntegerLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitIntegerLiteral( IntegerLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1540,7 +1540,7 @@ bool VisitIntegerLiteral( IntegerLiteral * v )
 
 bool VisitLabelDecl( LabelDecl * v )
 {
-   cout << endl << "bool VisitLabelDecl( LabelDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitLabelDecl( LabelDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1550,7 +1550,7 @@ bool VisitLabelDecl( LabelDecl * v )
 
 bool VisitLabelStmt( LabelStmt * v )
 {
-   cout << endl << "bool VisitLabelStmt( LabelStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitLabelStmt( LabelStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1560,7 +1560,7 @@ bool VisitLabelStmt( LabelStmt * v )
 
 bool VisitLambdaExpr( LambdaExpr * v )
 {
-   cout << endl << "bool VisitLambdaExpr( LambdaExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitLambdaExpr( LambdaExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1570,7 +1570,7 @@ bool VisitLambdaExpr( LambdaExpr * v )
 
 bool VisitLinkageSpecDecl( LinkageSpecDecl * v )
 {
-   cout << endl << "bool VisitLinkageSpecDecl( LinkageSpecDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitLinkageSpecDecl( LinkageSpecDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1580,7 +1580,7 @@ bool VisitLinkageSpecDecl( LinkageSpecDecl * v )
 
 bool VisitLValueReferenceType( LValueReferenceType * v )
 {
-   cout << endl << "bool VisitLValueReferenceType( LValueReferenceType * v )" << endl ;
+   std::cout << '\n' << "bool VisitLValueReferenceType( LValueReferenceType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1590,7 +1590,7 @@ bool VisitLValueReferenceType( LValueReferenceType * v )
 
 bool VisitMaterializeTemporaryExpr( MaterializeTemporaryExpr * v )
 {
-   cout << endl << "bool VisitMaterializeTemporaryExpr( MaterializeTemporaryExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitMaterializeTemporaryExpr( MaterializeTemporaryExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1600,7 +1600,7 @@ bool VisitMaterializeTemporaryExpr( MaterializeTemporaryExpr * v )
 
 bool VisitMemberExpr( MemberExpr * v )
 {
-   cout << endl << "bool VisitMemberExpr( MemberExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitMemberExpr( MemberExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1610,7 +1610,7 @@ bool VisitMemberExpr( MemberExpr * v )
 
 bool VisitMemberPointerType( MemberPointerType * v )
 {
-   cout << endl << "bool VisitMemberPointerType( MemberPointerType * v )" << endl ;
+   std::cout << '\n' << "bool VisitMemberPointerType( MemberPointerType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1620,7 +1620,7 @@ bool VisitMemberPointerType( MemberPointerType * v )
 
 bool VisitMSAsmStmt( MSAsmStmt * v )
 {
-   cout << endl << "bool VisitMSAsmStmt( MSAsmStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitMSAsmStmt( MSAsmStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1630,7 +1630,7 @@ bool VisitMSAsmStmt( MSAsmStmt * v )
 
 bool VisitMSDependentExistsStmt( MSDependentExistsStmt * v )
 {
-   cout << endl << "bool VisitMSDependentExistsStmt( MSDependentExistsStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitMSDependentExistsStmt( MSDependentExistsStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1640,7 +1640,7 @@ bool VisitMSDependentExistsStmt( MSDependentExistsStmt * v )
 
 bool VisitNamedDecl( NamedDecl * v )
 {
-   cout << endl << "bool VisitNamedDecl( NamedDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitNamedDecl( NamedDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1650,7 +1650,7 @@ bool VisitNamedDecl( NamedDecl * v )
 
 bool VisitNamespaceAliasDecl( NamespaceAliasDecl * v )
 {
-   cout << endl << "bool VisitNamespaceAliasDecl( NamespaceAliasDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitNamespaceAliasDecl( NamespaceAliasDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1660,7 +1660,7 @@ bool VisitNamespaceAliasDecl( NamespaceAliasDecl * v )
 
 bool VisitNamespaceDecl( NamespaceDecl * v )
 {
-   cout << endl << "bool VisitNamespaceDecl( NamespaceDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitNamespaceDecl( NamespaceDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1670,7 +1670,7 @@ bool VisitNamespaceDecl( NamespaceDecl * v )
 
 bool VisitNonTypeTemplateParmDecl( NonTypeTemplateParmDecl * v )
 {
-   cout << endl << "bool VisitNonTypeTemplateParmDecl( NonTypeTemplateParmDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitNonTypeTemplateParmDecl( NonTypeTemplateParmDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1680,7 +1680,7 @@ bool VisitNonTypeTemplateParmDecl( NonTypeTemplateParmDecl * v )
 
 bool VisitNullStmt( NullStmt * v )
 {
-   cout << endl << "bool VisitNullStmt( NullStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitNullStmt( NullStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1690,7 +1690,7 @@ bool VisitNullStmt( NullStmt * v )
 
 bool VisitObjCArrayLiteral( ObjCArrayLiteral * v )
 {
-   cout << endl << "bool VisitObjCArrayLiteral( ObjCArrayLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCArrayLiteral( ObjCArrayLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1700,7 +1700,7 @@ bool VisitObjCArrayLiteral( ObjCArrayLiteral * v )
 
 bool VisitObjCAtCatchStmt( ObjCAtCatchStmt * v )
 {
-   cout << endl << "bool VisitObjCAtCatchStmt( ObjCAtCatchStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtCatchStmt( ObjCAtCatchStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1710,7 +1710,7 @@ bool VisitObjCAtCatchStmt( ObjCAtCatchStmt * v )
 
 bool VisitObjCAtDefsFieldDecl( ObjCAtDefsFieldDecl * v )
 {
-   cout << endl << "bool VisitObjCAtDefsFieldDecl( ObjCAtDefsFieldDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtDefsFieldDecl( ObjCAtDefsFieldDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1720,7 +1720,7 @@ bool VisitObjCAtDefsFieldDecl( ObjCAtDefsFieldDecl * v )
 
 bool VisitObjCAtFinallyStmt( ObjCAtFinallyStmt * v )
 {
-   cout << endl << "bool VisitObjCAtFinallyStmt( ObjCAtFinallyStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtFinallyStmt( ObjCAtFinallyStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1730,7 +1730,7 @@ bool VisitObjCAtFinallyStmt( ObjCAtFinallyStmt * v )
 
 bool VisitObjCAtSynchronizedStmt( ObjCAtSynchronizedStmt * v )
 {
-   cout << endl << "bool VisitObjCAtSynchronizedStmt( ObjCAtSynchronizedStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtSynchronizedStmt( ObjCAtSynchronizedStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1740,7 +1740,7 @@ bool VisitObjCAtSynchronizedStmt( ObjCAtSynchronizedStmt * v )
 
 bool VisitObjCAtThrowStmt( ObjCAtThrowStmt * v )
 {
-   cout << endl << "bool VisitObjCAtThrowStmt( ObjCAtThrowStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtThrowStmt( ObjCAtThrowStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1750,7 +1750,7 @@ bool VisitObjCAtThrowStmt( ObjCAtThrowStmt * v )
 
 bool VisitObjCAtTryStmt( ObjCAtTryStmt * v )
 {
-   cout << endl << "bool VisitObjCAtTryStmt( ObjCAtTryStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAtTryStmt( ObjCAtTryStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1760,7 +1760,7 @@ bool VisitObjCAtTryStmt( ObjCAtTryStmt * v )
 
 bool VisitObjCAutoreleasePoolStmt( ObjCAutoreleasePoolStmt * v )
 {
-   cout << endl << "bool VisitObjCAutoreleasePoolStmt( ObjCAutoreleasePoolStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCAutoreleasePoolStmt( ObjCAutoreleasePoolStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1770,7 +1770,7 @@ bool VisitObjCAutoreleasePoolStmt( ObjCAutoreleasePoolStmt * v )
 
 bool VisitObjCBoolLiteralExpr( ObjCBoolLiteralExpr * v )
 {
-   cout << endl << "bool VisitObjCBoolLiteralExpr( ObjCBoolLiteralExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCBoolLiteralExpr( ObjCBoolLiteralExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1780,7 +1780,7 @@ bool VisitObjCBoolLiteralExpr( ObjCBoolLiteralExpr * v )
 
 bool VisitObjCBoxedExpr( ObjCBoxedExpr * v )
 {
-   cout << endl << "bool VisitObjCBoxedExpr( ObjCBoxedExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCBoxedExpr( ObjCBoxedExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1790,7 +1790,7 @@ bool VisitObjCBoxedExpr( ObjCBoxedExpr * v )
 
 bool VisitObjCBridgedCastExpr( ObjCBridgedCastExpr * v )
 {
-   cout << endl << "bool VisitObjCBridgedCastExpr( ObjCBridgedCastExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCBridgedCastExpr( ObjCBridgedCastExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1800,7 +1800,7 @@ bool VisitObjCBridgedCastExpr( ObjCBridgedCastExpr * v )
 
 bool VisitObjCCategoryDecl( ObjCCategoryDecl * v )
 {
-   cout << endl << "bool VisitObjCCategoryDecl( ObjCCategoryDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCCategoryDecl( ObjCCategoryDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1810,7 +1810,7 @@ bool VisitObjCCategoryDecl( ObjCCategoryDecl * v )
 
 bool VisitObjCCategoryImplDecl( ObjCCategoryImplDecl * v )
 {
-   cout << endl << "bool VisitObjCCategoryImplDecl( ObjCCategoryImplDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCCategoryImplDecl( ObjCCategoryImplDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1820,7 +1820,7 @@ bool VisitObjCCategoryImplDecl( ObjCCategoryImplDecl * v )
 
 bool VisitObjCCompatibleAliasDecl( ObjCCompatibleAliasDecl * v )
 {
-   cout << endl << "bool VisitObjCCompatibleAliasDecl( ObjCCompatibleAliasDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCCompatibleAliasDecl( ObjCCompatibleAliasDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1830,7 +1830,7 @@ bool VisitObjCCompatibleAliasDecl( ObjCCompatibleAliasDecl * v )
 
 bool VisitObjCContainerDecl( ObjCContainerDecl * v )
 {
-   cout << endl << "bool VisitObjCContainerDecl( ObjCContainerDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCContainerDecl( ObjCContainerDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1840,7 +1840,7 @@ bool VisitObjCContainerDecl( ObjCContainerDecl * v )
 
 bool VisitObjCDictionaryLiteral( ObjCDictionaryLiteral * v )
 {
-   cout << endl << "bool VisitObjCDictionaryLiteral( ObjCDictionaryLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCDictionaryLiteral( ObjCDictionaryLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1850,7 +1850,7 @@ bool VisitObjCDictionaryLiteral( ObjCDictionaryLiteral * v )
 
 bool VisitObjCEncodeExpr( ObjCEncodeExpr * v )
 {
-   cout << endl << "bool VisitObjCEncodeExpr( ObjCEncodeExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCEncodeExpr( ObjCEncodeExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1860,7 +1860,7 @@ bool VisitObjCEncodeExpr( ObjCEncodeExpr * v )
 
 bool VisitObjCForCollectionStmt( ObjCForCollectionStmt * v )
 {
-   cout << endl << "bool VisitObjCForCollectionStmt( ObjCForCollectionStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCForCollectionStmt( ObjCForCollectionStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1870,7 +1870,7 @@ bool VisitObjCForCollectionStmt( ObjCForCollectionStmt * v )
 
 bool VisitObjCImplDecl( ObjCImplDecl * v )
 {
-   cout << endl << "bool VisitObjCImplDecl( ObjCImplDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCImplDecl( ObjCImplDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1880,7 +1880,7 @@ bool VisitObjCImplDecl( ObjCImplDecl * v )
 
 bool VisitObjCImplementationDecl( ObjCImplementationDecl * v )
 {
-   cout << endl << "bool VisitObjCImplementationDecl( ObjCImplementationDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCImplementationDecl( ObjCImplementationDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1890,7 +1890,7 @@ bool VisitObjCImplementationDecl( ObjCImplementationDecl * v )
 
 bool VisitObjCIndirectCopyRestoreExpr( ObjCIndirectCopyRestoreExpr * v )
 {
-   cout << endl << "bool VisitObjCIndirectCopyRestoreExpr( ObjCIndirectCopyRestoreExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCIndirectCopyRestoreExpr( ObjCIndirectCopyRestoreExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1900,7 +1900,7 @@ bool VisitObjCIndirectCopyRestoreExpr( ObjCIndirectCopyRestoreExpr * v )
 
 bool VisitObjCInterfaceDecl( ObjCInterfaceDecl * v )
 {
-   cout << endl << "bool VisitObjCInterfaceDecl( ObjCInterfaceDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCInterfaceDecl( ObjCInterfaceDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1910,7 +1910,7 @@ bool VisitObjCInterfaceDecl( ObjCInterfaceDecl * v )
 
 bool VisitObjCInterfaceType( ObjCInterfaceType * v )
 {
-   cout << endl << "bool VisitObjCInterfaceType( ObjCInterfaceType * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCInterfaceType( ObjCInterfaceType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1920,7 +1920,7 @@ bool VisitObjCInterfaceType( ObjCInterfaceType * v )
 
 bool VisitObjCIsaExpr( ObjCIsaExpr * v )
 {
-   cout << endl << "bool VisitObjCIsaExpr( ObjCIsaExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCIsaExpr( ObjCIsaExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1930,7 +1930,7 @@ bool VisitObjCIsaExpr( ObjCIsaExpr * v )
 
 bool VisitObjCIvarDecl( ObjCIvarDecl * v )
 {
-   cout << endl << "bool VisitObjCIvarDecl( ObjCIvarDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCIvarDecl( ObjCIvarDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1940,7 +1940,7 @@ bool VisitObjCIvarDecl( ObjCIvarDecl * v )
 
 bool VisitObjCIvarRefExpr( ObjCIvarRefExpr * v )
 {
-   cout << endl << "bool VisitObjCIvarRefExpr( ObjCIvarRefExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCIvarRefExpr( ObjCIvarRefExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1950,7 +1950,7 @@ bool VisitObjCIvarRefExpr( ObjCIvarRefExpr * v )
 
 bool VisitObjCMessageExpr( ObjCMessageExpr * v )
 {
-   cout << endl << "bool VisitObjCMessageExpr( ObjCMessageExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCMessageExpr( ObjCMessageExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1960,7 +1960,7 @@ bool VisitObjCMessageExpr( ObjCMessageExpr * v )
 
 bool VisitObjCMethodDecl( ObjCMethodDecl * v )
 {
-   cout << endl << "bool VisitObjCMethodDecl( ObjCMethodDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCMethodDecl( ObjCMethodDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1970,7 +1970,7 @@ bool VisitObjCMethodDecl( ObjCMethodDecl * v )
 
 bool VisitObjCObjectPointerType( ObjCObjectPointerType * v )
 {
-   cout << endl << "bool VisitObjCObjectPointerType( ObjCObjectPointerType * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCObjectPointerType( ObjCObjectPointerType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1980,7 +1980,7 @@ bool VisitObjCObjectPointerType( ObjCObjectPointerType * v )
 
 bool VisitObjCObjectType( ObjCObjectType * v )
 {
-   cout << endl << "bool VisitObjCObjectType( ObjCObjectType * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCObjectType( ObjCObjectType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -1990,7 +1990,7 @@ bool VisitObjCObjectType( ObjCObjectType * v )
 
 bool VisitObjCPropertyDecl( ObjCPropertyDecl * v )
 {
-   cout << endl << "bool VisitObjCPropertyDecl( ObjCPropertyDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCPropertyDecl( ObjCPropertyDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2000,7 +2000,7 @@ bool VisitObjCPropertyDecl( ObjCPropertyDecl * v )
 
 bool VisitObjCPropertyImplDecl( ObjCPropertyImplDecl * v )
 {
-   cout << endl << "bool VisitObjCPropertyImplDecl( ObjCPropertyImplDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCPropertyImplDecl( ObjCPropertyImplDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2010,7 +2010,7 @@ bool VisitObjCPropertyImplDecl( ObjCPropertyImplDecl * v )
 
 bool VisitObjCPropertyRefExpr( ObjCPropertyRefExpr * v )
 {
-   cout << endl << "bool VisitObjCPropertyRefExpr( ObjCPropertyRefExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCPropertyRefExpr( ObjCPropertyRefExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2020,7 +2020,7 @@ bool VisitObjCPropertyRefExpr( ObjCPropertyRefExpr * v )
 
 bool VisitObjCProtocolDecl( ObjCProtocolDecl * v )
 {
-   cout << endl << "bool VisitObjCProtocolDecl( ObjCProtocolDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCProtocolDecl( ObjCProtocolDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2030,7 +2030,7 @@ bool VisitObjCProtocolDecl( ObjCProtocolDecl * v )
 
 bool VisitObjCProtocolExpr( ObjCProtocolExpr * v )
 {
-   cout << endl << "bool VisitObjCProtocolExpr( ObjCProtocolExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCProtocolExpr( ObjCProtocolExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2040,7 +2040,7 @@ bool VisitObjCProtocolExpr( ObjCProtocolExpr * v )
 
 bool VisitObjCSelectorExpr( ObjCSelectorExpr * v )
 {
-   cout << endl << "bool VisitObjCSelectorExpr( ObjCSelectorExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCSelectorExpr( ObjCSelectorExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2050,7 +2050,7 @@ bool VisitObjCSelectorExpr( ObjCSelectorExpr * v )
 
 bool VisitObjCStringLiteral( ObjCStringLiteral * v )
 {
-   cout << endl << "bool VisitObjCStringLiteral( ObjCStringLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCStringLiteral( ObjCStringLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2060,7 +2060,7 @@ bool VisitObjCStringLiteral( ObjCStringLiteral * v )
 
 bool VisitObjCSubscriptRefExpr( ObjCSubscriptRefExpr * v )
 {
-   cout << endl << "bool VisitObjCSubscriptRefExpr( ObjCSubscriptRefExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitObjCSubscriptRefExpr( ObjCSubscriptRefExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2070,7 +2070,7 @@ bool VisitObjCSubscriptRefExpr( ObjCSubscriptRefExpr * v )
 
 bool VisitOffsetOfExpr( OffsetOfExpr * v )
 {
-   cout << endl << "bool VisitOffsetOfExpr( OffsetOfExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitOffsetOfExpr( OffsetOfExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2080,7 +2080,7 @@ bool VisitOffsetOfExpr( OffsetOfExpr * v )
 
 bool VisitOpaqueValueExpr( OpaqueValueExpr * v )
 {
-   cout << endl << "bool VisitOpaqueValueExpr( OpaqueValueExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitOpaqueValueExpr( OpaqueValueExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2090,7 +2090,7 @@ bool VisitOpaqueValueExpr( OpaqueValueExpr * v )
 
 bool VisitOverloadExpr( OverloadExpr * v )
 {
-   cout << endl << "bool VisitOverloadExpr( OverloadExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitOverloadExpr( OverloadExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2100,7 +2100,7 @@ bool VisitOverloadExpr( OverloadExpr * v )
 
 bool VisitPackExpansionExpr( PackExpansionExpr * v )
 {
-   cout << endl << "bool VisitPackExpansionExpr( PackExpansionExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitPackExpansionExpr( PackExpansionExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2110,7 +2110,7 @@ bool VisitPackExpansionExpr( PackExpansionExpr * v )
 
 bool VisitPackExpansionType( PackExpansionType * v )
 {
-   cout << endl << "bool VisitPackExpansionType( PackExpansionType * v )" << endl ;
+   std::cout << '\n' << "bool VisitPackExpansionType( PackExpansionType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2120,7 +2120,7 @@ bool VisitPackExpansionType( PackExpansionType * v )
 
 bool VisitParenExpr( ParenExpr * v )
 {
-   cout << endl << "bool VisitParenExpr( ParenExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitParenExpr( ParenExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2130,7 +2130,7 @@ bool VisitParenExpr( ParenExpr * v )
 
 bool VisitParenListExpr( ParenListExpr * v )
 {
-   cout << endl << "bool VisitParenListExpr( ParenListExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitParenListExpr( ParenListExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2140,7 +2140,7 @@ bool VisitParenListExpr( ParenListExpr * v )
 
 bool VisitParenType( ParenType * v )
 {
-   cout << endl << "bool VisitParenType( ParenType * v )" << endl ;
+   std::cout << '\n' << "bool VisitParenType( ParenType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2150,7 +2150,7 @@ bool VisitParenType( ParenType * v )
 
 bool VisitParmVarDecl( ParmVarDecl * v )
 {
-   cout << endl << "bool VisitParmVarDecl( ParmVarDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitParmVarDecl( ParmVarDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2160,7 +2160,7 @@ bool VisitParmVarDecl( ParmVarDecl * v )
 
 bool VisitPointerType( PointerType * v )
 {
-   cout << endl << "bool VisitPointerType( PointerType * v )" << endl ;
+   std::cout << '\n' << "bool VisitPointerType( PointerType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2170,7 +2170,7 @@ bool VisitPointerType( PointerType * v )
 
 bool VisitPredefinedExpr( PredefinedExpr * v )
 {
-   cout << endl << "bool VisitPredefinedExpr( PredefinedExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitPredefinedExpr( PredefinedExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2180,7 +2180,7 @@ bool VisitPredefinedExpr( PredefinedExpr * v )
 
 bool VisitPseudoObjectExpr( PseudoObjectExpr * v )
 {
-   cout << endl << "bool VisitPseudoObjectExpr( PseudoObjectExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitPseudoObjectExpr( PseudoObjectExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2190,7 +2190,7 @@ bool VisitPseudoObjectExpr( PseudoObjectExpr * v )
 
 bool VisitRecordDecl( RecordDecl * v )
 {
-   cout << endl << "bool VisitRecordDecl( RecordDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitRecordDecl( RecordDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2200,7 +2200,7 @@ bool VisitRecordDecl( RecordDecl * v )
 
 bool VisitRecordType( RecordType * v )
 {
-   cout << endl << "bool VisitRecordType( RecordType * v )" << endl ;
+   std::cout << '\n' << "bool VisitRecordType( RecordType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2210,7 +2210,7 @@ bool VisitRecordType( RecordType * v )
 
 bool VisitRedeclarableTemplateDecl( RedeclarableTemplateDecl * v )
 {
-   cout << endl << "bool VisitRedeclarableTemplateDecl( RedeclarableTemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitRedeclarableTemplateDecl( RedeclarableTemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2220,7 +2220,7 @@ bool VisitRedeclarableTemplateDecl( RedeclarableTemplateDecl * v )
 
 bool VisitReferenceType( ReferenceType * v )
 {
-   cout << endl << "bool VisitReferenceType( ReferenceType * v )" << endl ;
+   std::cout << '\n' << "bool VisitReferenceType( ReferenceType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2230,7 +2230,7 @@ bool VisitReferenceType( ReferenceType * v )
 
 bool VisitReturnStmt( ReturnStmt * v )
 {
-   cout << endl << "bool VisitReturnStmt( ReturnStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitReturnStmt( ReturnStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2240,7 +2240,7 @@ bool VisitReturnStmt( ReturnStmt * v )
 
 bool VisitRValueReferenceType( RValueReferenceType * v )
 {
-   cout << endl << "bool VisitRValueReferenceType( RValueReferenceType * v )" << endl ;
+   std::cout << '\n' << "bool VisitRValueReferenceType( RValueReferenceType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2250,7 +2250,7 @@ bool VisitRValueReferenceType( RValueReferenceType * v )
 
 bool VisitSEHExceptStmt( SEHExceptStmt * v )
 {
-   cout << endl << "bool VisitSEHExceptStmt( SEHExceptStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitSEHExceptStmt( SEHExceptStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2260,7 +2260,7 @@ bool VisitSEHExceptStmt( SEHExceptStmt * v )
 
 bool VisitSEHFinallyStmt( SEHFinallyStmt * v )
 {
-   cout << endl << "bool VisitSEHFinallyStmt( SEHFinallyStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitSEHFinallyStmt( SEHFinallyStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2270,7 +2270,7 @@ bool VisitSEHFinallyStmt( SEHFinallyStmt * v )
 
 bool VisitSEHTryStmt( SEHTryStmt * v )
 {
-   cout << endl << "bool VisitSEHTryStmt( SEHTryStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitSEHTryStmt( SEHTryStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2280,7 +2280,7 @@ bool VisitSEHTryStmt( SEHTryStmt * v )
 
 bool VisitShuffleVectorExpr( ShuffleVectorExpr * v )
 {
-   cout << endl << "bool VisitShuffleVectorExpr( ShuffleVectorExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitShuffleVectorExpr( ShuffleVectorExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2290,7 +2290,7 @@ bool VisitShuffleVectorExpr( ShuffleVectorExpr * v )
 
 bool VisitSizeOfPackExpr( SizeOfPackExpr * v )
 {
-   cout << endl << "bool VisitSizeOfPackExpr( SizeOfPackExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitSizeOfPackExpr( SizeOfPackExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2300,7 +2300,7 @@ bool VisitSizeOfPackExpr( SizeOfPackExpr * v )
 
 bool VisitStaticAssertDecl( StaticAssertDecl * v )
 {
-   cout << endl << "bool VisitStaticAssertDecl( StaticAssertDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitStaticAssertDecl( StaticAssertDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2310,7 +2310,7 @@ bool VisitStaticAssertDecl( StaticAssertDecl * v )
 
 bool VisitStmtExpr( StmtExpr * v )
 {
-   cout << endl << "bool VisitStmtExpr( StmtExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitStmtExpr( StmtExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2320,7 +2320,7 @@ bool VisitStmtExpr( StmtExpr * v )
 
 bool VisitStmt( Stmt * v )
 {
-   cout << endl << "bool VisitStmt( Stmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitStmt( Stmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2330,7 +2330,7 @@ bool VisitStmt( Stmt * v )
 
 bool VisitStringLiteral( StringLiteral * v )
 {
-   cout << endl << "bool VisitStringLiteral( StringLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitStringLiteral( StringLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2340,7 +2340,7 @@ bool VisitStringLiteral( StringLiteral * v )
 
 bool VisitSubstNonTypeTemplateParmExpr( SubstNonTypeTemplateParmExpr * v )
 {
-   cout << endl << "bool VisitSubstNonTypeTemplateParmExpr( SubstNonTypeTemplateParmExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitSubstNonTypeTemplateParmExpr( SubstNonTypeTemplateParmExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2350,7 +2350,7 @@ bool VisitSubstNonTypeTemplateParmExpr( SubstNonTypeTemplateParmExpr * v )
 
 bool VisitSubstNonTypeTemplateParmPackExpr( SubstNonTypeTemplateParmPackExpr * v )
 {
-   cout << endl << "bool VisitSubstNonTypeTemplateParmPackExpr( SubstNonTypeTemplateParmPackExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitSubstNonTypeTemplateParmPackExpr( SubstNonTypeTemplateParmPackExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2360,7 +2360,7 @@ bool VisitSubstNonTypeTemplateParmPackExpr( SubstNonTypeTemplateParmPackExpr * v
 
 bool VisitSubstTemplateTypeParmPackType( SubstTemplateTypeParmPackType * v )
 {
-   cout << endl << "bool VisitSubstTemplateTypeParmPackType( SubstTemplateTypeParmPackType * v )" << endl ;
+   std::cout << '\n' << "bool VisitSubstTemplateTypeParmPackType( SubstTemplateTypeParmPackType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2370,7 +2370,7 @@ bool VisitSubstTemplateTypeParmPackType( SubstTemplateTypeParmPackType * v )
 
 bool VisitSubstTemplateTypeParmType( SubstTemplateTypeParmType * v )
 {
-   cout << endl << "bool VisitSubstTemplateTypeParmType( SubstTemplateTypeParmType * v )" << endl ;
+   std::cout << '\n' << "bool VisitSubstTemplateTypeParmType( SubstTemplateTypeParmType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2380,7 +2380,7 @@ bool VisitSubstTemplateTypeParmType( SubstTemplateTypeParmType * v )
 
 bool VisitSwitchCase( SwitchCase * v )
 {
-   cout << endl << "bool VisitSwitchCase( SwitchCase * v )" << endl ;
+   std::cout << '\n' << "bool VisitSwitchCase( SwitchCase * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2390,7 +2390,7 @@ bool VisitSwitchCase( SwitchCase * v )
 
 bool VisitSwitchStmt( SwitchStmt * v )
 {
-   cout << endl << "bool VisitSwitchStmt( SwitchStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitSwitchStmt( SwitchStmt * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2400,7 +2400,7 @@ bool VisitSwitchStmt( SwitchStmt * v )
 
 bool VisitTagDecl( TagDecl * v )
 {
-   cout << endl << "bool VisitTagDecl( TagDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTagDecl( TagDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2410,7 +2410,7 @@ bool VisitTagDecl( TagDecl * v )
 
 bool VisitTagType( TagType * v )
 {
-   cout << endl << "bool VisitTagType( TagType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTagType( TagType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2420,7 +2420,7 @@ bool VisitTagType( TagType * v )
 
 bool VisitTemplateDecl( TemplateDecl * v )
 {
-   cout << endl << "bool VisitTemplateDecl( TemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTemplateDecl( TemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2430,7 +2430,7 @@ bool VisitTemplateDecl( TemplateDecl * v )
 
 bool VisitTemplateSpecializationType( TemplateSpecializationType * v )
 {
-   cout << endl << "bool VisitTemplateSpecializationType( TemplateSpecializationType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTemplateSpecializationType( TemplateSpecializationType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2440,7 +2440,7 @@ bool VisitTemplateSpecializationType( TemplateSpecializationType * v )
 
 bool VisitTemplateTemplateParmDecl( TemplateTemplateParmDecl * v )
 {
-   cout << endl << "bool VisitTemplateTemplateParmDecl( TemplateTemplateParmDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTemplateTemplateParmDecl( TemplateTemplateParmDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2450,7 +2450,7 @@ bool VisitTemplateTemplateParmDecl( TemplateTemplateParmDecl * v )
 
 bool VisitTemplateTypeParmDecl( TemplateTypeParmDecl * v )
 {
-   cout << endl << "bool VisitTemplateTypeParmDecl( TemplateTypeParmDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTemplateTypeParmDecl( TemplateTypeParmDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2460,7 +2460,7 @@ bool VisitTemplateTypeParmDecl( TemplateTypeParmDecl * v )
 
 bool VisitTemplateTypeParmType( TemplateTypeParmType * v )
 {
-   cout << endl << "bool VisitTemplateTypeParmType( TemplateTypeParmType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTemplateTypeParmType( TemplateTypeParmType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2470,7 +2470,7 @@ bool VisitTemplateTypeParmType( TemplateTypeParmType * v )
 
 bool VisitTranslationUnitDecl( TranslationUnitDecl * v )
 {
-   cout << endl << "bool VisitTranslationUnitDecl( TranslationUnitDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTranslationUnitDecl( TranslationUnitDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2480,7 +2480,7 @@ bool VisitTranslationUnitDecl( TranslationUnitDecl * v )
 
 bool VisitTypeAliasDecl( TypeAliasDecl * v )
 {
-   cout << endl << "bool VisitTypeAliasDecl( TypeAliasDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeAliasDecl( TypeAliasDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2490,7 +2490,7 @@ bool VisitTypeAliasDecl( TypeAliasDecl * v )
 
 bool VisitTypeAliasTemplateDecl( TypeAliasTemplateDecl * v )
 {
-   cout << endl << "bool VisitTypeAliasTemplateDecl( TypeAliasTemplateDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeAliasTemplateDecl( TypeAliasTemplateDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2500,7 +2500,7 @@ bool VisitTypeAliasTemplateDecl( TypeAliasTemplateDecl * v )
 
 bool VisitTypeDecl( TypeDecl * v )
 {
-   cout << endl << "bool VisitTypeDecl( TypeDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeDecl( TypeDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2510,7 +2510,7 @@ bool VisitTypeDecl( TypeDecl * v )
 
 bool VisitTypedefNameDecl( TypedefNameDecl * v )
 {
-   cout << endl << "bool VisitTypedefNameDecl( TypedefNameDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypedefNameDecl( TypedefNameDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2520,7 +2520,7 @@ bool VisitTypedefNameDecl( TypedefNameDecl * v )
 
 bool VisitTypedefType( TypedefType * v )
 {
-   cout << endl << "bool VisitTypedefType( TypedefType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypedefType( TypedefType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2530,7 +2530,7 @@ bool VisitTypedefType( TypedefType * v )
 
 bool VisitTypeOfExprType( TypeOfExprType * v )
 {
-   cout << endl << "bool VisitTypeOfExprType( TypeOfExprType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeOfExprType( TypeOfExprType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2540,7 +2540,7 @@ bool VisitTypeOfExprType( TypeOfExprType * v )
 
 bool VisitTypeOfType( TypeOfType * v )
 {
-   cout << endl << "bool VisitTypeOfType( TypeOfType * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeOfType( TypeOfType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2550,7 +2550,7 @@ bool VisitTypeOfType( TypeOfType * v )
 
 bool VisitTypeTraitExpr( TypeTraitExpr * v )
 {
-   cout << endl << "bool VisitTypeTraitExpr( TypeTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitTypeTraitExpr( TypeTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2560,7 +2560,7 @@ bool VisitTypeTraitExpr( TypeTraitExpr * v )
 
 bool VisitType( Type * v )
 {
-   cout << endl << "bool VisitType( Type * v )" << endl ;
+   std::cout << '\n' << "bool VisitType( Type * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2570,7 +2570,7 @@ bool VisitType( Type * v )
 
 bool VisitUnaryAddrOf( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryAddrOf( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryAddrOf( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2580,7 +2580,7 @@ bool VisitUnaryAddrOf( UnaryOperator * v )
 
 bool VisitUnaryDeref( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryDeref( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryDeref( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2590,7 +2590,7 @@ bool VisitUnaryDeref( UnaryOperator * v )
 
 bool VisitUnaryExprOrTypeTraitExpr( UnaryExprOrTypeTraitExpr * v )
 {
-   cout << endl << "bool VisitUnaryExprOrTypeTraitExpr( UnaryExprOrTypeTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryExprOrTypeTraitExpr( UnaryExprOrTypeTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2600,7 +2600,7 @@ bool VisitUnaryExprOrTypeTraitExpr( UnaryExprOrTypeTraitExpr * v )
 
 bool VisitUnaryExtension( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryExtension( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryExtension( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2610,7 +2610,7 @@ bool VisitUnaryExtension( UnaryOperator * v )
 
 bool VisitUnaryImag( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryImag( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryImag( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2620,7 +2620,7 @@ bool VisitUnaryImag( UnaryOperator * v )
 
 bool VisitUnaryLNot( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryLNot( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryLNot( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2630,7 +2630,7 @@ bool VisitUnaryLNot( UnaryOperator * v )
 
 bool VisitUnaryMinus( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryMinus( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryMinus( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2640,7 +2640,7 @@ bool VisitUnaryMinus( UnaryOperator * v )
 
 bool VisitUnaryNot( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryNot( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryNot( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2650,7 +2650,7 @@ bool VisitUnaryNot( UnaryOperator * v )
 
 bool VisitUnaryOperator( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryOperator( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryOperator( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2660,7 +2660,7 @@ bool VisitUnaryOperator( UnaryOperator * v )
 
 bool VisitUnaryPlus( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryPlus( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryPlus( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2670,7 +2670,7 @@ bool VisitUnaryPlus( UnaryOperator * v )
 
 bool VisitUnaryPostDec( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryPostDec( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryPostDec( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2680,7 +2680,7 @@ bool VisitUnaryPostDec( UnaryOperator * v )
 
 bool VisitUnaryPostInc( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryPostInc( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryPostInc( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2690,7 +2690,7 @@ bool VisitUnaryPostInc( UnaryOperator * v )
 
 bool VisitUnaryPreDec( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryPreDec( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryPreDec( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2700,7 +2700,7 @@ bool VisitUnaryPreDec( UnaryOperator * v )
 
 bool VisitUnaryPreInc( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryPreInc( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryPreInc( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2710,7 +2710,7 @@ bool VisitUnaryPreInc( UnaryOperator * v )
 
 bool VisitUnaryReal( UnaryOperator * v )
 {
-   cout << endl << "bool VisitUnaryReal( UnaryOperator * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryReal( UnaryOperator * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2720,7 +2720,7 @@ bool VisitUnaryReal( UnaryOperator * v )
 
 bool VisitUnaryTransformType( UnaryTransformType * v )
 {
-   cout << endl << "bool VisitUnaryTransformType( UnaryTransformType * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryTransformType( UnaryTransformType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2730,7 +2730,7 @@ bool VisitUnaryTransformType( UnaryTransformType * v )
 #if 0
 bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )
 {
-   cout << endl << "bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2740,7 +2740,7 @@ bool VisitUnaryTypeTraitExpr( UnaryTypeTraitExpr * v )
 
 bool VisitUnresolvedLookupExpr( UnresolvedLookupExpr * v )
 {
-   cout << endl << "bool VisitUnresolvedLookupExpr( UnresolvedLookupExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnresolvedLookupExpr( UnresolvedLookupExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2750,7 +2750,7 @@ bool VisitUnresolvedLookupExpr( UnresolvedLookupExpr * v )
 
 bool VisitUnresolvedMemberExpr( UnresolvedMemberExpr * v )
 {
-   cout << endl << "bool VisitUnresolvedMemberExpr( UnresolvedMemberExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnresolvedMemberExpr( UnresolvedMemberExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2760,7 +2760,7 @@ bool VisitUnresolvedMemberExpr( UnresolvedMemberExpr * v )
 
 bool VisitUnresolvedUsingTypenameDecl( UnresolvedUsingTypenameDecl * v )
 {
-   cout << endl << "bool VisitUnresolvedUsingTypenameDecl( UnresolvedUsingTypenameDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnresolvedUsingTypenameDecl( UnresolvedUsingTypenameDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2770,7 +2770,7 @@ bool VisitUnresolvedUsingTypenameDecl( UnresolvedUsingTypenameDecl * v )
 
 bool VisitUnresolvedUsingType( UnresolvedUsingType * v )
 {
-   cout << endl << "bool VisitUnresolvedUsingType( UnresolvedUsingType * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnresolvedUsingType( UnresolvedUsingType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2780,7 +2780,7 @@ bool VisitUnresolvedUsingType( UnresolvedUsingType * v )
 
 bool VisitUnresolvedUsingValueDecl( UnresolvedUsingValueDecl * v )
 {
-   cout << endl << "bool VisitUnresolvedUsingValueDecl( UnresolvedUsingValueDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitUnresolvedUsingValueDecl( UnresolvedUsingValueDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2790,7 +2790,7 @@ bool VisitUnresolvedUsingValueDecl( UnresolvedUsingValueDecl * v )
 
 bool VisitUserDefinedLiteral( UserDefinedLiteral * v )
 {
-   cout << endl << "bool VisitUserDefinedLiteral( UserDefinedLiteral * v )" << endl ;
+   std::cout << '\n' << "bool VisitUserDefinedLiteral( UserDefinedLiteral * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2800,7 +2800,7 @@ bool VisitUserDefinedLiteral( UserDefinedLiteral * v )
 
 bool VisitUsingDecl( UsingDecl * v )
 {
-   cout << endl << "bool VisitUsingDecl( UsingDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitUsingDecl( UsingDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2810,7 +2810,7 @@ bool VisitUsingDecl( UsingDecl * v )
 
 bool VisitUsingDirectiveDecl( UsingDirectiveDecl * v )
 {
-   cout << endl << "bool VisitUsingDirectiveDecl( UsingDirectiveDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitUsingDirectiveDecl( UsingDirectiveDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2820,7 +2820,7 @@ bool VisitUsingDirectiveDecl( UsingDirectiveDecl * v )
 
 bool VisitUsingShadowDecl( UsingShadowDecl * v )
 {
-   cout << endl << "bool VisitUsingShadowDecl( UsingShadowDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitUsingShadowDecl( UsingShadowDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2830,7 +2830,7 @@ bool VisitUsingShadowDecl( UsingShadowDecl * v )
 
 bool VisitVAArgExpr( VAArgExpr * v )
 {
-   cout << endl << "bool VisitVAArgExpr( VAArgExpr * v )" << endl ;
+   std::cout << '\n' << "bool VisitVAArgExpr( VAArgExpr * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2840,7 +2840,7 @@ bool VisitVAArgExpr( VAArgExpr * v )
 
 bool VisitValueDecl( ValueDecl * v )
 {
-   cout << endl << "bool VisitValueDecl( ValueDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitValueDecl( ValueDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2850,7 +2850,7 @@ bool VisitValueDecl( ValueDecl * v )
 
 bool VisitVarDecl( VarDecl * v )
 {
-   cout << endl << "bool VisitVarDecl( VarDecl * v )" << endl ;
+   std::cout << '\n' << "bool VisitVarDecl( VarDecl * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2860,7 +2860,7 @@ bool VisitVarDecl( VarDecl * v )
 
 bool VisitVariableArrayType( VariableArrayType * v )
 {
-   cout << endl << "bool VisitVariableArrayType( VariableArrayType * v )" << endl ;
+   std::cout << '\n' << "bool VisitVariableArrayType( VariableArrayType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2870,7 +2870,7 @@ bool VisitVariableArrayType( VariableArrayType * v )
 
 bool VisitVectorType( VectorType * v )
 {
-   cout << endl << "bool VisitVectorType( VectorType * v )" << endl ;
+   std::cout << '\n' << "bool VisitVectorType( VectorType * v )" << '\n' ;
 
    v->dump() ;
 
@@ -2880,7 +2880,7 @@ bool VisitVectorType( VectorType * v )
 
 bool VisitWhileStmt( WhileStmt * v )
 {
-   cout << endl << "bool VisitWhileStmt( WhileStmt * v )" << endl ;
+   std::cout << '\n' << "bool VisitWhileStmt( WhileStmt * v )" << '\n' ;
 
    v->dump() ;
 
