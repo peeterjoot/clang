@@ -2,7 +2,7 @@ CXX := g++
 #CXX := $(CLANGPATH)/bin/clang++
 LDFLAGS += -ldl
 
-CLANGPATH=$(HOME)/local/clang380cm
+CLANGPATH=$(HOME)/local/clang390debug
 
 LDFLAGS += -L$(CLANGPATH)/lib
 LDFLAGS += -Wl,-rpath,$(CLANGPATH)/lib

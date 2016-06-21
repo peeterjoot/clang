@@ -50,6 +50,7 @@ LDFLAGS += -lclangStaticAnalyzerCore
 LDFLAGS += -lclangSerialization
 LDFLAGS += -lclangTooling
 LDFLAGS += -lclangToolingCore
+LDFLAGS += -lclangFormat
 LDFLAGS += -Wl,--end-group
 LDFLAGS += `$(LLVM_BIN_PATH)llvm-config --ldflags --libs --system-libs`
 LDFLAGS += -ldl
@@ -76,7 +77,7 @@ all: $(EXES)
 
 LINK_COMMAND = $(CXX) $< -o $@ $(LDFLAGS)
 
-$(LLVMPREFIX)/bin/lzmutexRenamer : renamer.o
+$(LLVMPREFIX)/bin/lzmutexRenamer : RenameMethod.o
 	$(LINK_COMMAND)
 
 tool_classvisitor: tool_classvisitor.o
@@ -89,9 +90,6 @@ tool_globalvisitor: tool_globalvisitor.o
 	$(LINK_COMMAND)
 
 tool_memberdumper: tool_memberdumper.o
-	$(LINK_COMMAND)
-
-renamer.o : RenameMethod.cpp
 	$(LINK_COMMAND)
 
 #isystem.h : isystem.pl
