@@ -174,7 +174,9 @@ int main(int argc, const char **argv)
    } ;
 
    using pRename = std::unique_ptr<renameAndAddParamModifier> ;
-   std::vector<pRename> r ;
+
+   // can't let the storage for these MatchCallback objects go out of scope 
+   std::vector<pRename> callbacks ;
 
    for ( const auto & p : replaceBaseNames )
    {
@@ -194,8 +196,8 @@ int main(int argc, const char **argv)
                callExpr( callee(functionDecl(hasName( s ))) ).bind("y"),
          r2.get());
 
-      r.push_back( std::move( r1 ) ) ;
-      r.push_back( std::move( r2 ) ) ;
+      callbacks.push_back( std::move( r1 ) ) ;
+      callbacks.push_back( std::move( r2 ) ) ;
    }
 
    return Tool.runAndSave(newFrontendActionFactory(&Finder).get());
