@@ -1,5 +1,6 @@
 #CFLAGS += -ferror-limit=200
 CFLAGS += -g
+CFLAGS += -MMD
 LLVM_LIBS := core mc
 
 HOSTNAME := $(shell hostname)
@@ -58,9 +59,10 @@ LDFLAGS += -lz
 
 #LDFLAGS += $(shell $(LLVM_BIN_PATH)llvm-config --libs $(LLVM_LIBS))
 
-EXES += tooling_sample
-#EXES += $(LLVMPREFIX)/bin/stripGmblkVoidPPcast
-#EXES += $(LLVMPREFIX)/bin/gblkToGmblk
+EXES += tool_classvisitor
+EXES += tool_globalvisitor
+EXES += tool_dumper
+EXES += tool_memberdumper
 EXES += $(LLVMPREFIX)/bin/lzmutexRenamer
 
 CFLAGS += -std=c++11
@@ -69,34 +71,33 @@ CFLAGS += -std=c++11
 
 all: $(EXES)
 
-tooling_sample.o : depmap.h dumper.h
-
 %.o : %.cpp
 	$(CXX) -c $< $(CFLAGS)
 
-#$(LLVMPREFIX)/bin/stripGmblkVoidPPcast : stripGmblkVoidPPcast.o
-#	$(CXX) $< -o $@ $(LDFLAGS)
-#
-#$(LLVMPREFIX)/bin/gblkToGmblk : gblkToGmblk.o
-#	$(CXX) $< -o $@ $(LDFLAGS)
+LINK_COMMAND = $(CXX) $< -o $@ $(LDFLAGS)
 
 $(LLVMPREFIX)/bin/lzmutexRenamer : renamer.o
-	$(CXX) $< -o $@ $(LDFLAGS)
+	$(LINK_COMMAND)
 
-tooling_sample: tooling_sample.o
-	$(CXX) $< -o $@ $(LDFLAGS)
+tool_classvisitor: tool_classvisitor.o
+	$(LINK_COMMAND)
+
+tool_dumper: tool_dumper.o
+	$(LINK_COMMAND)
+
+tool_globalvisitor: tool_globalvisitor.o
+	$(LINK_COMMAND)
+
+tool_memberdumper: tool_memberdumper.o
+	$(LINK_COMMAND)
 
 renamer.o : RenameMethod.cpp
-	$(CXX) -c $< $(CFLAGS) -o $@
-
-#stripGmblkVoidPPcast.o : RenameMethod.cpp
-#	$(CXX) -c $< $(CFLAGS) -DGMBLK_VOIDPP_MODE -o $@
-
-#gblkToGmblk.o : RenameMethod.cpp
-#	$(CXX) -c $< $(CFLAGS) -DGBLK_TO_GMBLK -o $@
+	$(LINK_COMMAND)
 
 #isystem.h : isystem.pl
 #	$< $(CXX) > $@
 
 clean:
 	rm -rf *.o *.ll $(EXES) $(CLEAN_EXES) isystem.h
+
+-include $(wildcard *.d)

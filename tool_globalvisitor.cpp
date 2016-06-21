@@ -15,6 +15,7 @@
 #include <sstream>
 #include <string>
 #include <memory>
+#include <iostream>
 
 #include "clang/AST/AST.h"
 #include "clang/AST/ASTConsumer.h"
@@ -27,24 +28,11 @@
 #include "clang/Rewrite/Core/Rewriter.h"
 #include "llvm/Support/raw_ostream.h"
 
-//#define MEMBERDUMPER
-#define CLASSVISITOR
-//#define DUMPER
-//#define GLOBALVISITOR
-
-#if defined CLASSVISITOR
-   #include "depmap.h"
-#elif defined MEMBERDUMPER || defined GLOBALVISITOR
-   #include <iostream>
-#endif
-
 using namespace clang;
 using namespace clang::driver;
 using namespace clang::tooling;
 
 static llvm::cl::OptionCategory ToolingSampleCategory("Tooling Sample");
-
-#if defined CLASSVISITOR || defined GLOBALVISITOR
 
 #if 0
    #include <fstream>
@@ -96,7 +84,6 @@ static QualType returnUnderlyingTypeIfArray( QualType q )
 
    return q ;
 }
-#endif
 
 // By implementing RecursiveASTVisitor, we can specify which AST nodes
 // we're interested in by overriding relevant methods.
@@ -110,217 +97,7 @@ public:
 
   ~MyASTVisitor()
   {
-#if defined CLASSVISITOR
-     m_depMap.dump() ;
-#endif
   }
-
-#if defined CLASSVISITOR
-  // this file is embedded into the class decl of a MyASTVisitor
-
-  void insertIntoMap( const std::string & theTypeName, const QualType & q, const std::string * pAsString = NULL )
-  {
-  #if 0
-     const Type * t = q.getTypePtr() ;
-
-     if ( g_quietDeps )
-     {
-        if ( t->isArithmeticType() ||
-             t->isPointerType() ||
-             t->isReferenceType() ||
-             0 )
-        {
-           //
-           // This is a hack, so that there is at least one fake dependency for each type, since any type is only put
-           // into the dependency tree implicitly.
-           //
-           pAsString = &g_typeSuppressed ;
-        }
-     }
-  #endif
-
-     if ( pAsString )
-     {
-        m_depMap.insertDependency( theTypeName, *pAsString ) ;
-     }
-     else
-     {
-        m_depMap.insertDependency( theTypeName, q.getAsString( m_pp ) ) ;
-     }
-  }
-
-  // Find typedefs:
-  bool VisitTypedefDecl( TypedefDecl * dtDecl )
-  {
-     QualType       qtUnderLying         = returnUnderlyingTypeIfArray( dtDecl->getUnderlyingType() ) ;
-     const Type *   tUnderlying          = qtUnderLying.getTypePtr() ;
-     std::string         theUnderlyingType    = qtUnderLying.getAsString( ) ;
-     std::string         typeDefinitionName   = dtDecl->getName().str() ;
-     std::string *       pName                = NULL ;
-
-     if ( tUnderlying->isStructureType() )
-     {
-        theUnderlyingType = theUnderlyingType.substr(strlen("struct ")) ;
-        pName = &theUnderlyingType ;
-     }
-     else if ( tUnderlying->isClassType() )
-     {
-        theUnderlyingType = theUnderlyingType.substr(strlen("class ")) ;
-        pName = &theUnderlyingType ;
-     }
-     else if ( tUnderlying->isUnionType() )
-     {
-        theUnderlyingType = theUnderlyingType.substr(strlen("union ")) ;
-        pName = &theUnderlyingType ;
-     }
-     else if ( tUnderlying->isEnumeralType() )
-     {
-        theUnderlyingType = theUnderlyingType.substr(strlen("enum ")) ;
-        pName = &theUnderlyingType ;
-     }
-
-     if ( typeDefinitionName != theUnderlyingType )
-     {
-        insertIntoMap( typeDefinitionName, qtUnderLying, pName ) ;
-     }
-
-     return true ;
-  }
-
-  // Find class/struct/unions:
-  bool VisitCXXRecordDecl( CXXRecordDecl * r )
-  {
-     if ( r->isThisDeclarationADefinition() )
-     {
-        for ( CXXRecordDecl::base_class_iterator b = r->bases_begin(), e = r->bases_end() ;
-              b != e ; ++b )
-        {
-           CXXBaseSpecifier & a = *b ;
-
-           const QualType & q = a.getType() ;
-
-           insertIntoMap( r->getName().str(), q ) ;
-        }
-     }
-
-  #if 0
-     // debug:
-     llvm::outs() << "r: " << r->getName().str() << "\n" ;
-  #endif
-
-     return true ;
-  }
-
-  #if 0
-  bool VisitFunctionDecl( FunctionDecl * f )
-  {
-     // Only function definitions (with bodies), not declarations.
-     if ( f->hasBody() )
-     {
-        DeclarationName DeclName = f->getNameInfo().getName() ;
-        std::string FuncName = DeclName.getAsString() ;
-
-        llvm::outs() << "f: " << FuncName << "\n" ;
-     }
-
-     return true ;
-  }
-  #endif
-
-  // Member's within class/struct/union:
-  bool VisitFieldDecl( FieldDecl * f )
-  {
-     RecordDecl * r = f->getParent() ;
-     const QualType & theMembersClassType = m_context.getRecordType( r ) ;
-     const QualType & thisFieldQualType = returnUnderlyingTypeIfArray( getQualTypeForDecl( f ).getDesugaredType( m_context ) ) ;
-
-     const std::string & s = theMembersClassType.getAsString( m_pp ) ;
-
-  #if 0
-     if ( (s == "stmmShmHeader") || (s == "OSSVLatchInternals") )
-     {
-        llvm::outs() << "xx\n" ;
-     }
-  #endif
-  #if 0
-     llvm::outs() << "s: " << s << "\n" ;
-  #endif
-
-     insertIntoMap( s, thisFieldQualType ) ;
-
-     return true ;
-  }
-#elif defined MEMBERDUMPER
-  bool myVisitFieldDecl( const std::string & classname, FieldDecl * f )
-  {
-  //   f = f->getDefinition() ;
-
-     const TypeSourceInfo * pThisFieldSourceInfo = f->getTypeSourceInfo() ;
-     TypeLoc thisFieldTypeLoc = pThisFieldSourceInfo->getTypeLoc() ;
-     const QualType & thisFieldQualType = thisFieldTypeLoc.getType() ;
-
-     const Type * t = thisFieldTypeLoc.getTypePtr() ;
-
-     if ( !t->isIncompleteType() && !t->isDependentType() )
-     {
-        size_t szInBits = m_context.getTypeSize( thisFieldQualType ) ;
-        size_t offsetInBits = m_context.getFieldOffset( f ) ;
-
-        llvm::outs()
-           << "[" << offsetInBits/8 << "]:\t"
-           << classname << "::"
-           << thisFieldQualType.getAsString( m_pp ) << "\t" << f->getNameAsString()
-           << "\tsize: " << szInBits/8 << "\n" ;
-           ;
-     }
-
-     return true ;
-  }
-
-  bool VisitCXXRecordDecl( CXXRecordDecl * r )
-  {
-  //   r->dump() ;
-  //   r = r->getDefinition() ;
-
-     if ( r && r->getDescribedClassTemplate() )
-     {
-        r = r->getInstantiatedFromMemberClass() ;
-     }
-
-     if ( r && r->isThisDeclarationADefinition() )
-     {
-        const QualType & theMembersClassType = m_context.getRecordType( r ) ;
-
-  #if 0
-        for ( CXXRecordDecl::base_class_iterator b = r->bases_begin(), e = r->bases_end() ;
-              b != e ; ++b )
-        {
-           CXXBaseSpecifier & a = *b ;
-
-           const QualType & q = a.getType() ;
-
-           insertIntoMap( r->getName().str(), q ) ;
-        }
-  #endif
-
-        std::string classname = theMembersClassType.getAsString( m_pp ) ;
-
-        for ( CXXRecordDecl::field_iterator b = r->field_begin(), e = r->field_end() ;
-              b != e ; ++b )
-        {
-           FieldDecl * a = *b ;
-
-           myVisitFieldDecl( classname, a ) ;
-        }
-     }
-
-     return true ;
-  }
-#elif defined DUMPER
-
-  #include "dumper.h"
-
-#elif defined GLOBALVISITOR
 
   static std::string subMemberString( const std::string & prefix, const std::string & field )
   {
@@ -437,7 +214,6 @@ public:
 
      return true ;
   }
-#endif
 
 private:
   Rewriter &                    TheRewriter;
@@ -445,10 +221,6 @@ private:
 
   ASTContext &                  m_context ;
   PrintingPolicy                m_pp ;
-
-#if defined CLASSVISITOR
-  dependencyMap                 m_depMap ;
-#endif
 };
 
 // Implementation of the ASTConsumer interface for reading an AST produced
