@@ -1,2 +1,2 @@
-cp lzmutex.cpp lzmutex.cpp
+cp lzmutex.cpp lzmutexx.cpp
 lzmutexRenamer lzmutexx.cpp 
