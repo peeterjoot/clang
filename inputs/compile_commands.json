@@ -6,7 +6,7 @@
 },
 {
   "directory": "/home/pjoot/clang/inputs",
-  "command": "/home/pjoot/local/clang390debug/bin/clang lzmutex.cpp",
+  "command": "/home/pjoot/local/clang390debug/bin/clang -std=c++11 lzmutex.cpp",
   "file": "/home/pjoot/clang/inputs/lzmutex.cpp"
 }
 ]

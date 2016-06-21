@@ -5,5 +5,5 @@ void lz_mutex_lock_extended( lz_mutex *, int ) ;
 
 void foo()
 {
-   lz_mutex_lock( NULL ) ;
+   lz_mutex_lock( nullptr ) ;
 }
