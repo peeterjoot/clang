@@ -51,4 +51,11 @@ private:
    // the tool has finished with all translation units.
    Replacements *Replace;
 
-};
+} ;
+
+// main:
+   voidPPCastStrippingModifier voidppCallBack(&Tool.getReplacements());
+   Finder.addMatcher(
+            callExpr( callee(functionDecl(hasName("sqlogmblk"))) ).bind("x"),
+      &voidppCallBack);
+
