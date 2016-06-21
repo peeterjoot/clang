@@ -6,3 +6,6 @@ TOOL=$(CLANGPATH)/bin/tooling_sample
 
 withstdio.o : withstdio.cpp
 	$(TOOL) withstdio.cpp
+
+clean : 
+	rm -f lzmutexx.cpp

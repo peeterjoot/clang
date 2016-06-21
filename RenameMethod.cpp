@@ -173,6 +173,9 @@ int main(int argc, const char **argv)
       {"lz_cond_signal", 0}
    } ;
 
+   using pRename = std::unique_ptr<renameAndAddParamModifier> ;
+   std::vector<pRename> r ;
+
    for ( const auto & p : replaceBaseNames )
    {
       const auto & s = p.first ;
@@ -180,16 +183,19 @@ int main(int argc, const char **argv)
 
       std::string e = s + "_extended" ;
 
-      renameAndAddParamModifier renamerCallBack1(&Tool.getReplacements(), n, e, ", LZ_OP_ABORT_ON_ERROR" );
-      renameAndAddParamModifier renamerCallBack2(&Tool.getReplacements(), n, e, ", 0" );
+      pRename r1( new renameAndAddParamModifier(&Tool.getReplacements(), n, e, ", LZ_OP_ABORT_ON_ERROR" ) ) ;
+      pRename r2( new renameAndAddParamModifier(&Tool.getReplacements(), n, e, ", 0" ) ) ;
 
       Finder.addMatcher(
                callExpr( callee(functionDecl(hasName( s + "_or_abort" ))) ).bind("y"),
-         &renamerCallBack1);
+         r1.get());
 
       Finder.addMatcher(
                callExpr( callee(functionDecl(hasName( s ))) ).bind("y"),
-         &renamerCallBack2);
+         r2.get());
+
+      r.push_back( std::move( r1 ) ) ;
+      r.push_back( std::move( r2 ) ) ;
    }
 
    return Tool.runAndSave(newFrontendActionFactory(&Finder).get());

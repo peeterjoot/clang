@@ -1,12 +1,12 @@
 [
 {
   "directory": "/home/pjoot/clang/inputs",
-  "command": "/home/pjoot/local/clang390debug/bin/clang withstdio.cpp",
-  "file": "/home/pjoot/clang/inputs/withstdio.cpp"
+  "command": "clang withstdio.cpp",
+  "file": "withstdio.cpp"
 },
 {
   "directory": "/home/pjoot/clang/inputs",
-  "command": "/home/pjoot/local/clang390debug/bin/clang -std=c++11 lzmutexx.cpp",
-  "file": "/home/pjoot/clang/inputs/lzmutexx.cpp"
+  "command": "clang -std=c++11 lzmutexx.cpp",
+  "file": "lzmutexx.cpp"
 }
 ]
