@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+my %flags = (
+   'lzmutexx.cpp' => ' -std=c++11',
+) ;
+
+print "[\n" ;
+
+my $pwd = `pwd` ; chomp $pwd ;
+
+my $comma = '' ;
+foreach my $f (glob( "*.cpp"))
+{
+   my $flags = $flags{$f} ;
+   $flags = '' unless ( defined $flags ) ;
+
+print qq(${comma}{
+  "directory": "$pwd",
+  "command": "clang${flags} $f",
+  "file": "$f"
+}
+) ;
+
+   $comma = ',' ; 
+}
+
+print "]\n" ;

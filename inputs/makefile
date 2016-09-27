@@ -4,6 +4,9 @@
 include ../makefile.$(HOSTNAME)
 TOOL=$(CLANGPATH)/bin/tooling_sample
 
+compile_commands.json : ./mkjson
+	./mkjson > $@
+
 withstdio.o : withstdio.cpp
 	$(TOOL) withstdio.cpp
 

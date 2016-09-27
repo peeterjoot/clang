@@ -186,17 +186,21 @@ int main(int argc, const char **argv)
       std::string e = s + "_extended" ;
 
       pRename r1( new renameAndAddParamModifier(&Tool.getReplacements(), n, e, ", LZ_OP_ABORT_ON_ERROR" ) ) ;
-      pRename r2( new renameAndAddParamModifier(&Tool.getReplacements(), n, e, ", 0" ) ) ;
 
       Finder.addMatcher(
                callExpr( callee(functionDecl(hasName( s + "_or_abort" ))) ).bind("y"),
          r1.get());
 
+      callbacks.push_back( std::move( r1 ) ) ;
+
+
+
+      pRename r2( new renameAndAddParamModifier(&Tool.getReplacements(), n, e, ", 0" ) ) ;
+
       Finder.addMatcher(
                callExpr( callee(functionDecl(hasName( s ))) ).bind("y"),
          r2.get());
 
-      callbacks.push_back( std::move( r1 ) ) ;
       callbacks.push_back( std::move( r2 ) ) ;
    }
 

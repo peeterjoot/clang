@@ -1,8 +1,14 @@
 CXX := g++
-#CXX := $(CLANGPATH)/bin/clang++
 LDFLAGS += -ldl
 
-CLANGPATH=$(HOME)/local/clang390debug
+ifneq ($(CLANGDIR),'')
+	CLANGPATH=$(CLANGDIR)
+else
+	#CLANGPATH=$(HOME)/local/clang390debug
+	CLANGPATH=$(HOME)/local/clang390release
+endif
+
+#CXX := $(CLANGPATH)/bin/clang++
 
 LDFLAGS += -L$(CLANGPATH)/lib
 LDFLAGS += -Wl,-rpath,$(CLANGPATH)/lib
