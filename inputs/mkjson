@@ -11,8 +11,8 @@ my $pwd = `pwd` ; chomp $pwd ;
 my $comma = '' ;
 foreach my $f (glob( "*.cpp"))
 {
-   my $flags = $flags{$f} ;
-   $flags = '' unless ( defined $flags ) ;
+   my $flags = " -I$pwd/inc" ;
+   $flags .= $flags{$f} if ( defined $flags{$f} ) ;
 
 print qq(${comma}{
   "directory": "$pwd",

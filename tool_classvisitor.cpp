@@ -26,6 +26,7 @@
 #include "clang/Tooling/Tooling.h"
 #include "clang/Rewrite/Core/Rewriter.h"
 #include "llvm/Support/raw_ostream.h"
+#include "clang/Basic/TargetInfo.h"
 
 #include "depmap.h"
 
@@ -89,9 +90,18 @@ static QualType returnUnderlyingTypeIfArray( QualType q )
 // By implementing RecursiveASTVisitor, we can specify which AST nodes
 // we're interested in by overriding relevant methods.
 class MyASTVisitor : public RecursiveASTVisitor<MyASTVisitor> {
+private:
+  Rewriter &                    TheRewriter;
+  CompilerInstance &            CI ;
+
+  ASTContext &                  m_context ;
+  PrintingPolicy                m_pp ;
+
+  dependencyMap                 m_depMap ;
+  TargetInfo &                  m_target ;
 public:
   MyASTVisitor(Rewriter &R, CompilerInstance & CI_) :
-        TheRewriter( R ), CI( CI_ ), m_context( CI.getASTContext() ), m_pp( m_context.getLangOpts() )
+        TheRewriter( R ), CI( CI_ ), m_context( CI.getASTContext() ), m_pp( m_context.getLangOpts() ), m_target( CI.getTarget() )
   {
     m_pp.SuppressTagKeyword = 1 ;
   }
@@ -236,14 +246,6 @@ public:
      return true ;
   }
 
-private:
-  Rewriter &                    TheRewriter;
-  CompilerInstance &            CI ;
-
-  ASTContext &                  m_context ;
-  PrintingPolicy                m_pp ;
-
-  dependencyMap                 m_depMap ;
 };
 
 // Implementation of the ASTConsumer interface for reading an AST produced
